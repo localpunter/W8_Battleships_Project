@@ -1,5 +1,4 @@
 const PubSub = require('../helpers/pub_sub.js');
-const PubSub = require('../helpers/pub_sub.js');
 
 const FormTileView = function (container, id) {
   this.container = container;
@@ -7,13 +6,14 @@ const FormTileView = function (container, id) {
 };
 
 FormTileView.prototype.bindEvents = function () {
-  this.form.addEventListener('click', (event) => {
+  formTile = //create element and add to dom
+  formTile.addEventListener('click', (event) => {
     this.handleClick(event);
   });
 };
 
 FormTileView.prototype.handleClick = function (event) {
-  PubSub.publish('FormTileView:tile-clicked', event);
+  PubSub.publish('FormTileView:tile-clicked', event);  //pass id here event.target.id??
 };
 
 module.exports = FormTileView;

@@ -1,11 +1,17 @@
 {
-  "name": "cc_proj2_battleships",
+  "name": "battleships_game",
   "version": "1.0.0",
   "description": "",
-  "main": "webpack.config.js",
+  "main": "index.js",
   "scripts": {
+    "build": "webpack -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.0"
+  }
 }

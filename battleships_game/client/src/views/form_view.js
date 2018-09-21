@@ -1,5 +1,5 @@
 const PubSub = require('../helpers/pub_sub.js');
-const PubSub = require('./form_tile_view.js');
+const FormTileView = require('./form_tile_view.js');
 
 const FormView = function (container) {
   this.container = container;

@@ -1,4 +1,4 @@
-const FormView = require('./views/form_view.js')
+const FormView = require('../views/form_view.js')
 const PubSub = require('../helpers/pub_sub.js');
 
 const Setup = function (container) {
@@ -8,6 +8,8 @@ const Setup = function (container) {
 };
 
 Setup.prototype.bindEvents = function () {
+
+  console.log('set up setting up');
 
   PubSub.subscribe('EmptyTileView:tile-clicked', (event) => {
     // deal with counter
