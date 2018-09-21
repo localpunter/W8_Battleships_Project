@@ -14,11 +14,12 @@ Game.prototype.bindEvents = function () {
   PubSub.subscribe('GridTileView:tile-clicked', (event) => {
     this.attemptCounter += 1;
     // get id from event
-    const tileIdString = 0;
+    const tileIdString = "00";
     //dummy - this will depend on what is published
     //will come as a string though so need to convert
     const tileRow = parseInt(tileIdString[0]);
     const tileCol = parseInt(tileIdString[1]);
+    console.log(tileRow);
     //check current state of corresponding tile
     const currentState = this.gamestate[tileRow][tileCol];
     // change state of tile accordingly
@@ -33,17 +34,17 @@ Game.prototype.bindEvents = function () {
       // so change to 1 as now no boat [MISS]
       // no change to counter as missed
       this.gamestate[tileRow][tileCol] = 1;
-    } elseif (currentState === 1) {
+    } else if (currentState === 1) {
       // 1 = no boat - attempted bombing [MISS]
       // so no change as attempted same tile as previous MISS
       // no change to counter as still a MISS
-    } elseif (currentState === 2) {
+    } else if (currentState === 2) {
       // 2 = boat - no attempted bombing
       // so change to 3 as hit boat [HIT]
       // and add to counter
       this.gamestate[tileRow][tileCol] = 3;
       this.hitCounter += 1;
-    } elseif (currentState === 3) {
+    } else if (currentState === 3) {
       // 3 = boat - attempted bombing [HIT]
       // so no change as attempted same tile as previous HIT
       // no change to counter as still a HIT
