@@ -4,22 +4,23 @@ const PubSub = require('../helpers/pub_sub.js');
 const Setup = function (container) {
   this.container = container;
   this.counter = 0;
+  this.gameState = [[0,0],[0,0]];
 };
 
 Setup.prototype.bindEvents = function () {
 
   PubSub.subscribe('EmptyTileView:tile-clicked', (event) => {
     // deal with counter
-    // if else - submit
+    //get id
+    //check current state of corresponding tile
+    //change state of tile
+    //change counter
+    if (this.counter < 5) {
+      this.render();
+    } else {
+      PubSub.publish('Setup:table-ready', array);
+    }
   });
-
-  PubSub.subscribe('ListItemView:status-changed', (event) => {
-
-  });
-
-  PubSub.subscribe('ListFormView:item-submitted', (evt) => {
-
-  })
 
 };
 

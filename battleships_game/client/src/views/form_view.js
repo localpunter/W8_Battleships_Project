@@ -15,7 +15,7 @@ FormView.prototype.bindEvents = function () {
 
 FormView.prototype.render = function (event) {
 
-  //create form div element
+  // create form div element
   // formDiv =
   // add form div to DOM
   formState = [[1,1],[1,1]]; // update to get state from events
