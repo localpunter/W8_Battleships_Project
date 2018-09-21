@@ -62,10 +62,14 @@ Game.prototype.bindEvents = function () {
       this.render(this.gamestate);
     } else {
       // enough hits so deal with finish game
-      this.hitAllBoats();
+      this.result();
     }
 
     //could also check attemptCounter here is we want to end the game that way
+    if (this.attemptsLeft < 1) {
+      this.result()
+    }
+
     //but think that was an extension
 
   });
@@ -79,8 +83,9 @@ Game.prototype.render = function () {
   gridView.render();
 }
 
-Game.prototype.hitAllBoats = function () {
-  // Publish to a ResultView
+Game.prototype.result = function () {
+  // Publish to a ResultView, if attemptsLeft < 1 player 1 wins, otherwise player 2
+  PubSub.publish('Game:result', this.attemptsLeft )
 }
 
 module.exports = Game;
