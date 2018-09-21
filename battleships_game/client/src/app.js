@@ -25,6 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const game = new Game(container, gamestate);
   game.bindEvents();
-  game.render(); //this will be removed later as action depends on setup
+  // game.render(); //this will be removed later as action depends on setup
 
 });

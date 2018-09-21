@@ -32,7 +32,7 @@ Setup.prototype.bindEvents = function () {
     // now check counter is not over number of ships required
     // dummy 1 used for now to check functionality
     // intended to be 5 for MVP
-    if (this.counter < 1) {
+    if (this.counter < 5) {
       // then continue to render form until enough tiles clicked
       this.render(this.gamestate);
     } else {
@@ -43,6 +43,7 @@ Setup.prototype.bindEvents = function () {
 };
 
 Setup.prototype.render = function () {
+  this.container.innerHTML = '';
   console.log('set up rendering');
   const formView = new FormView(this.container, this.gamestate);
   formView.render();

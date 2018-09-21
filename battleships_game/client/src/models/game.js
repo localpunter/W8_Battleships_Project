@@ -10,6 +10,10 @@ const Game = function (container, gamestate) {
 
 Game.prototype.bindEvents = function () {
   PubSub.subscribe('Setup:table-ready', (event) => {
+    console.log("game subscribed to setup table ready");
+    console.log("gamestate passed", event.detail);
+    this.gamestate = event.detail;
+    this.render();
   });
   PubSub.subscribe('GridTileView:tile-clicked', (event) => {
     this.attemptCounter += 1;
@@ -50,7 +54,7 @@ Game.prototype.bindEvents = function () {
     // now check counter is not over number of ships required
     // dummy 1 used for now to check functionality
     // intended to be 5 for MVP - if we use 5 ships of size 1
-    if (this.hitCounter < 1) {
+    if (this.hitCounter < 5) {
       // then continue to render game until enough hits
       this.render(this.gamestate);
     } else {
@@ -65,6 +69,7 @@ Game.prototype.bindEvents = function () {
 };
 
 Game.prototype.render = function () {
+  this.container.innerHTML = '';
   console.log('game rendering');
   const gridView = new GridView(this.container, this.gamestate);
   gridView.render();
