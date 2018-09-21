@@ -9,6 +9,7 @@ const Setup = function (container, gamestate) {
 
 Setup.prototype.bindEvents = function () {
   console.log('set up setting up');
+  console.log('gamestate:', this.gamestate);
   PubSub.subscribe('FormTileView:tile-clicked', (event) => {
     // get id from event
     const tileIdString = "00";
@@ -19,6 +20,7 @@ Setup.prototype.bindEvents = function () {
     console.log(tileRow);
     //check current state of corresponding tile
     const currentState = this.gamestate[tileRow][tileCol];
+
     // change state of tile accordingly
     //this may need to change depending on coding for states
     // i assume for now there are only 2 - not clicked = 0 or clicked = 1

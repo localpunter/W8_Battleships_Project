@@ -11,13 +11,13 @@ const FormView = function (container, gamestate) {
 
 FormView.prototype.render = function (event) {
   console.log('form view rendering');
-  
+
   const formTable = createAndAppend('table', 'form-table', '', this.container)
   console.log(this.gamestate);
   for (let i = 0; i < this.gamestate.length; i++) {
     const row = createAndAppend('tr', null , '', formTable)
-    for (let j = 0; j < this.gamestate[0].length; j++) {
-      const formTileView = new FormTileView(row, i.toString() + j.toString());
+    for (let j = 0; j < this.gamestate[0].length; j++) {      
+      const formTileView = new FormTileView(row, i.toString() + j.toString(), this.gamestate[i][j]);
       formTileView.bindEvents();
     }
   }
