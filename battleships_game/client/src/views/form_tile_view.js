@@ -6,11 +6,8 @@ const FormTileView = function (container, id) {
 };
 
 FormTileView.prototype.bindEvents = function () {
-  //create DOM element and add to container
-  //add click event
   const formTile = document.createElement('div');
   this.container.appendChild(formTile);
-
   formTile.addEventListener('click', (event) => {
     this.handleClick(event);
   });

@@ -7,13 +7,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const container = document.querySelector('#container');
 
-const gamestate = [[0,0], [0,0]];
+  const gamestate = [];
+  const gridSize = 6;
+  const defaultGridEntry = 0;
+  for (let i = 0; i < gridSize; i++) {
+    const row = [];
+    for (let j = 0; j < gridSize; j++) {
+      row.push(defaultGridEntry);
+    }
+    gamestate.push(row);
+  }
+  console.log(gamestate);
 
   const setup = new Setup(container, gamestate);
   setup.bindEvents();
   setup.render();
 
-  const game = new Game(container);
+  const game = new Game(container, gamestate);
   game.bindEvents();
   game.render(); //this will be removed later as action depends on setup
 

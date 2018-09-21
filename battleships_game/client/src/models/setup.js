@@ -1,16 +1,14 @@
-const FormView = require('../views/form_view.js')
 const PubSub = require('../helpers/pub_sub.js');
+const FormView = require('../views/form_view.js')
 
-const Setup = function (container) {
+const Setup = function (container, gamestate) {
   this.container = container;
   this.counter = 0;
-  this.gamestate = [[0,0],[0,0]];
+  this.gamestate = gamestate;
 };
 
 Setup.prototype.bindEvents = function () {
-
   console.log('set up setting up');
-
   PubSub.subscribe('EmptyTileView:tile-clicked', (event) => {
     // deal with counter
     //get id
@@ -23,17 +21,12 @@ Setup.prototype.bindEvents = function () {
       PubSub.publish('Setup:table-ready', array);
     }
   });
-
 };
 
 Setup.prototype.render = function () {
-
   console.log('set up rendering');
-
   const formView = new FormView(this.container, this.gamestate);
   formView.render();
-
 }
-
 
 module.exports = Setup;

@@ -6,10 +6,8 @@ const GridTileView = function (container, id) {
 };
 
 GridTileView.prototype.bindEvents = function () {
-  //add click event
   const gridTile = document.createElement('div');
   this.container.appendChild(gridTile);
-
   gridTile.addEventListener('click', (event) => {
     this.handleClick(event);
   });
