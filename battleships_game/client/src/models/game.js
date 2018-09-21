@@ -35,7 +35,7 @@ Game.prototype.bindEvents = function () {
       // 0 = no boat - no attempted bombing
       // so change to 1 as now no boat [MISS]
       // no change to counter as missed
-      this.gamestate[tileRow][tileCol] = 1;
+      this.gamestate[tileRow][tileCol] = 2;
     } else if (currentState === 1) {
       // 1 = boat - no attempted bombing
       // so change to 3 as hit boat [HIT]
