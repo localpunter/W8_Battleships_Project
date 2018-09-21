@@ -24,9 +24,9 @@ GridTileView.prototype.handleStatus = function () {
   if (this.status === 0) {
     this.status = "Empty"
   } else if (this.status === 1) {
-    this.status = "MISS"
-  } else if (this.status === 2) {
     this.status = "Ship"
+  } else if (this.status === 2) {
+    this.status = "MISS"
   } else if (this.status === 3) {
     this.status = "HIT"
   }
