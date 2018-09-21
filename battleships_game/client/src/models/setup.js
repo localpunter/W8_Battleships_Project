@@ -9,7 +9,7 @@ const Setup = function (container, gamestate) {
 
 Setup.prototype.bindEvents = function () {
   console.log('set up setting up');
-  PubSub.subscribe('EmptyTileView:tile-clicked', (event) => {
+  PubSub.subscribe('FormTileView:tile-clicked', (event) => {
     // get id from event
     const tileIdString = "00";
     //dummy - this will depend on what is published
