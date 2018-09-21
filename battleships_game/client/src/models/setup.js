@@ -10,15 +10,35 @@ const Setup = function (container, gamestate) {
 Setup.prototype.bindEvents = function () {
   console.log('set up setting up');
   PubSub.subscribe('EmptyTileView:tile-clicked', (event) => {
-    // deal with counter
-    //get id
+    // get id from event
+    const tileIdString = 0;
+    //dummy - this will depend on what is published
+    //will come as a string though so need to convert
+    const tileRow = parseInt(tileIdString[0]);
+    const tileCol = parseInt(tileIdString[1]);
     //check current state of corresponding tile
-    //change state of tile
-    //change counter
-    if (this.counter < 1) { // will be 5 for MVP
+    const currentState = this.gamestate[tileRow][tileCol];
+    // change state of tile accordingly
+    //this may need to change depending on coding for states
+    // i assume for now there are only 2 - not clicked = 0 or clicked = 1
+    if (currentState === 0) {
+      //so change to clicked = 1 and add to counter of clicked tiles
+      this.gamestate[tileRow][tileCol] = 1;
+      this.counter += 1;
+    } elseif (currentState === 1) {
+      // so unclicked - so change to not clicked = 0 and reduce counter
+      this.gamestate[tileRow][tileCol] = 0;
+      this.counter -= 1;
+    }
+    // now check counter is not over number of ships required
+    // dummy 1 used for now to check functionality
+    // intended to be 5 for MVP
+    if (this.counter < 1) {
+      // then continue to render form until enough tiles clicked
       this.render(this.gamestate);
     } else {
-      PubSub.publish('Setup:table-ready', array);
+      // enough boats set / tiles clicked so publish table ready
+      PubSub.publish('Setup:table-ready', this.gamestate);
     }
   });
 };
