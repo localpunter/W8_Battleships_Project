@@ -3,7 +3,8 @@ const GridView = require('../views/grid_view.js')
 
 const Game = function (container, gamestate) {
   this.container = container;
-  this.attemptCounter = 0;
+  this.attemptCounter = 0; //I'm not sure if we need it or just the attemps left(maybe for stadistics?)
+  this.attemptsLeft = 15 ; // We can change this, just a number to try
   this.hitCounter = 0;
   this.gamestate = gamestate; // this will later be updated by setup
 };
@@ -35,6 +36,8 @@ Game.prototype.bindEvents = function () {
       // 0 = no boat - no attempted bombing
       // so change to 1 as now no boat [MISS]
       // no change to counter as missed
+      this.attemptCounter += 1;
+      this.attemptsLeft -= 1;
       this.gamestate[tileRow][tileCol] = 2;
     } else if (currentState === 1) {
       // 1 = boat - no attempted bombing
@@ -71,11 +74,13 @@ Game.prototype.bindEvents = function () {
 Game.prototype.render = function () {
   this.container.innerHTML = '';
   console.log('game rendering');
-  const gridView = new GridView(this.container, this.gamestate);
+  const gridView = new GridView(this.container, this.gamestate, this.attemptsLeft);
+  console.log('attemptsLeft:', this.attemptsLeft);
   gridView.render();
 }
 
 Game.prototype.hitAllBoats = function () {
+  // Publish to a ResultView
 }
 
 module.exports = Game;
