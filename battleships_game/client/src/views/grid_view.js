@@ -7,12 +7,11 @@ const GridView = function (container, gamestate) {
 };
 
 GridView.prototype.render = function (event) {
-  console.log('grid view rendering');
   const gridDiv = document.createElement('div');
   this.container.appendChild(gridDiv);
   for (let i = 0; i < this.gamestate.length; i++) {
     for (let j = 0; j < this.gamestate[0].length; j++) {
-      const gameTileView = new GridTileView(gridDiv, i.toString() + j.toString());
+      const gameTileView = new GridTileView(gridDiv, i.toString() + j.toString(), this.gamestate[i][j]);
       gameTileView.bindEvents();
     }
   }
