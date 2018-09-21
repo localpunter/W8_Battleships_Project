@@ -28,8 +28,8 @@ Game.prototype.bindEvents = function () {
     //this may need to change depending on coding for states
     // i assume for now there are 4 which are:
     // 0 = no boat - no attempted bombing
-    // 1 = no boat - attempted bombing [MISS]
-    // 2 = boat - no attempted bombing
+    // 1 = boat - no attempted bombing
+    // 2 = no boat - attempted bombing [MISS]
     // 3 = boat - attempted bombing [HIT]
     if (currentState === 0) {
       // 0 = no boat - no attempted bombing
@@ -37,15 +37,15 @@ Game.prototype.bindEvents = function () {
       // no change to counter as missed
       this.gamestate[tileRow][tileCol] = 1;
     } else if (currentState === 1) {
-      // 1 = no boat - attempted bombing [MISS]
-      // so no change as attempted same tile as previous MISS
-      // no change to counter as still a MISS
-    } else if (currentState === 2) {
-      // 2 = boat - no attempted bombing
+      // 1 = boat - no attempted bombing
       // so change to 3 as hit boat [HIT]
       // and add to counter
       this.gamestate[tileRow][tileCol] = 3;
       this.hitCounter += 1;
+    } else if (currentState === 2) {
+      // 2 = no boat - attempted bombing [MISS]
+      // so no change as attempted same tile as previous MISS
+      // no change to counter as still a MISS
     } else if (currentState === 3) {
       // 3 = boat - attempted bombing [HIT]
       // so no change as attempted same tile as previous HIT
