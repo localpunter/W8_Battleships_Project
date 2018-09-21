@@ -9,7 +9,7 @@ const Setup = function (container, gamestate) {
 
 Setup.prototype.bindEvents = function () {
   PubSub.subscribe('FormTileView:tile-clicked', (event) => {
-    console.log("id passed", event.detail);
+    console.log("id passed to form", event.detail);
     const tileIdString = event.detail;
     // comes as a string though so need to convert
     const tileRow = parseInt(tileIdString[0]);

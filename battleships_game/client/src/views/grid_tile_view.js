@@ -10,7 +10,6 @@ const GridTileView = function (container, id, status) {
 
 GridTileView.prototype.bindEvents = function () {
   this.handleStatus()
-  console.log('status:', this.status);
   const gridTile = createAndAppend('td', this.id, this.status, this.container);
   gridTile.addEventListener('click', (event) => {
     this.handleClick(event);
@@ -18,7 +17,7 @@ GridTileView.prototype.bindEvents = function () {
 };
 
 GridTileView.prototype.handleClick = function (event) {
-  PubSub.publish('GridTileView:tile-clicked', event);  //pass id here event.target.id??
+  PubSub.publish('GridTileView:tile-clicked', event.target.id);  //pass id here event.target.id??
 };
 
 GridTileView.prototype.handleStatus = function () {
