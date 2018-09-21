@@ -10,7 +10,6 @@ const FormTileView = function (container, id, status) {
 
 FormTileView.prototype.bindEvents = function () {
   this.handleStatus()
-  console.log('status:', this.status);
   const formTile = createAndAppend('td', this.id, this.status, this.container);
   formTile.addEventListener('click', (event) => {
     this.handleClick(event);
@@ -18,7 +17,7 @@ FormTileView.prototype.bindEvents = function () {
 };
 
 FormTileView.prototype.handleClick = function (event) {
-  PubSub.publish('FormTileView:tile-clicked', event);  //pass id here event.target.id??
+  PubSub.publish('FormTileView:tile-clicked', event.target.id);  //pass id here event.target.id??
 };
 
 FormTileView.prototype.handleStatus = function () {

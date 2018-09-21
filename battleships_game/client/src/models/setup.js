@@ -8,16 +8,12 @@ const Setup = function (container, gamestate) {
 };
 
 Setup.prototype.bindEvents = function () {
-  console.log('set up setting up');
-  console.log('gamestate:', this.gamestate);
   PubSub.subscribe('FormTileView:tile-clicked', (event) => {
-    // get id from event
-    const tileIdString = "00";
-    //dummy - this will depend on what is published
-    //will come as a string though so need to convert
+    console.log("id passed", event.detail);
+    const tileIdString = event.detail;
+    // comes as a string though so need to convert
     const tileRow = parseInt(tileIdString[0]);
     const tileCol = parseInt(tileIdString[1]);
-    console.log(tileRow);
     //check current state of corresponding tile
     const currentState = this.gamestate[tileRow][tileCol];
 
