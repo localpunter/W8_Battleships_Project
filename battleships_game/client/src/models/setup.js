@@ -17,8 +17,8 @@ Setup.prototype.bindEvents = function () {
     //check current state of corresponding tile
     //change state of tile
     //change counter
-    if (this.counter < 5) {
-      this.render();
+    if (this.counter < 1) { // will be 5 for MVP
+      this.render(this.gamestate);
     } else {
       PubSub.publish('Setup:table-ready', array);
     }
@@ -26,10 +26,12 @@ Setup.prototype.bindEvents = function () {
 
 };
 
-Setup.prototype.render = function () {
+Setup.prototype.render = function (gamestate) {
 
-  const formView = new FormView(this.container);
-  formView.bindEvents();
+  console.log('set up rendering');
+
+  const formView = new FormView(this.container, gamestate);
+  formView.render();
 
 }
 

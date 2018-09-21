@@ -1,6 +1,6 @@
 const PubSub = require('../helpers/pub_sub.js');
 
-const ListItemView = function (container) {
+const View = function (container) {
   this.container = container;
 };
 
