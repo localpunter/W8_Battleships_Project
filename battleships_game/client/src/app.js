@@ -7,11 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const container = document.querySelector('#container');
 
-  const setup = new Setup(container);
+const gamestate = [[0,0], [0,0]];
+
+  const setup = new Setup(container, gamestate);
   setup.bindEvents();
   setup.render();
 
-  const game = new Game();
+  const game = new Game(container);
   game.bindEvents();
+  game.render(); //this will be removed later as action depends on setup
 
 });

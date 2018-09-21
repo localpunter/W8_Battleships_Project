@@ -1,22 +1,28 @@
 const PubSub = require('../helpers/pub_sub.js');
-const ListItemView = require('./list_item_view.js');
+const GridTileView = require('./grid_tile_view.js');
 
-const ListView = function (container) {
+const GridView = function (container, gamestate) {
   this.container = container;
+  this.gamestate = gamestate;
 };
 
-ListView.prototype.bindEvents = function () {
-  PubSub.subscribe('BucketList:data-loaded', (evt) => {
-    this.render(evt.detail);
-  });
+GridView.prototype.render = function (event) {
+
+  console.log('grid view rendering');
+
+  const gridDiv = document.createElement('div');
+  // add form div to DOM
+  this.container.appendChild(gridDiv);
+  for (let i = 0; i < this.gamestate.length; i++) {
+    for (let j = 0; j < this.gamestate[0].length; j++) {
+      //creates tiles
+      const gameTileView = new GridTileView(gridDiv, i.toString() + j.toString());
+      //adds click events to tiles
+      gameTileView.bindEvents();
+    }
+  }
+
 };
 
-ListView.prototype.render = function (list) {
-  this.container.innerHTML = '';
-  console.log(list);
-  const sortList = list.sort( (a,b) => a.status - b.status)
-  const listItemView = new ListItemView(this.container);
-  list.forEach((item) => listItemView.render(item));
-};
 
-module.exports = ListView;
+module.exports = GridView;

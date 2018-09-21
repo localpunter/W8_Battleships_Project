@@ -4,7 +4,7 @@ const PubSub = require('../helpers/pub_sub.js');
 const Setup = function (container) {
   this.container = container;
   this.counter = 0;
-  this.gameState = [[0,0],[0,0]];
+  this.gamestate = [[0,0],[0,0]];
 };
 
 Setup.prototype.bindEvents = function () {
@@ -26,11 +26,11 @@ Setup.prototype.bindEvents = function () {
 
 };
 
-Setup.prototype.render = function (gamestate) {
+Setup.prototype.render = function () {
 
   console.log('set up rendering');
 
-  const formView = new FormView(this.container, gamestate);
+  const formView = new FormView(this.container, this.gamestate);
   formView.render();
 
 }

@@ -2,30 +2,23 @@ const PubSub = require('../helpers/pub_sub.js');
 const FormTileView = require('./form_tile_view.js');
 
 const FormView = function (container, gamestate) {
+  console.log(gamestate);
   this.container = container;
   this.gamestate = gamestate;
+  console.log(this.gamestate);
 };
-
-// FormView.prototype.bindEvents = function () {
-//
-//   console.log('form view binding events');
-
-  // PubSub.subscribe('Setup:not-ready', (event) => {
-  //   FormView.render(event);
-  // });
-
-// };
 
 FormView.prototype.render = function (event) {
 
   console.log('form view rendering');
 
-  // create form div element
-  // formDiv =
+  // create form div e
+  const formDiv = document.createElement('div');
   // add form div to DOM
-  formState = [[1,1],[1,1]]; // update to get state from events
-  for (let i = 0; i < formState.length; i++) {
-    for (let j = 0; j < formState[0].length; j++) {
+  this.container.appendChild(formDiv);
+  console.log(this.gamestate);
+  for (let i = 0; i < this.gamestate.length; i++) {
+    for (let j = 0; j < this.gamestate[0].length; j++) {
       //creates tiles
       const formTileView = new FormTileView(formDiv, i.toString() + j.toString());
       //adds click events to tiles
