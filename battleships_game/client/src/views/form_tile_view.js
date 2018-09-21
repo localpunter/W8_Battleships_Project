@@ -1,16 +1,15 @@
 const PubSub = require('../helpers/pub_sub.js');
+const createAndAppend = require('../helpers/create_append.js');
 
 const FormTileView = function (container, id) {
   this.container = container;
   this.id = id;
+  this.status = 'Empty';
+  // pass status from form_view and the model
 };
 
 FormTileView.prototype.bindEvents = function () {
-  //create DOM element and add to container
-  //add click event
-  const formTile = document.createElement('div');
-  this.container.appendChild(formTile);
-
+  const formTile = createAndAppend('td', this.id, this.status, this.container);
   formTile.addEventListener('click', (event) => {
     this.handleClick(event);
   });
