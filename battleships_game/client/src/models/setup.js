@@ -46,6 +46,7 @@ Setup.prototype.bindEvents = function () {
     if (event.detail) {
       this.counter = 0
       this.reset();
+      this.render();
     }
   })
 };
