@@ -1,5 +1,6 @@
 const Game = require('./models/game.js');
 const Setup = require('./models/setup.js');
+const ResultView = require('./views/result_view.js');
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -26,5 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const game = new Game(container, gamestate);
   game.bindEvents();
   // game.render(); //this will be removed later as action depends on setup
+
+  const result = new ResultView(container);
+  result.bindEvents();
 
 });
