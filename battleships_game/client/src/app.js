@@ -1,6 +1,7 @@
 const Game = require('./models/game.js');
 const Setup = require('./models/setup.js');
 const ResultView = require('./views/result_view.js');
+const IntermediateView = require('./views/intermediate_view.js');
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -23,6 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const setup = new Setup(container, gamestate);
   setup.bindEvents();
   setup.render();
+
+  const intermediateView = new IntermediateView(container, gamestate);
+  intermediateView.bindEvents();
 
   const game = new Game(container, gamestate);
   game.bindEvents();
