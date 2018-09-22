@@ -21,9 +21,7 @@ GridTileView.prototype.handleClick = function (event) {
 };
 
 GridTileView.prototype.handleStatus = function () {
-  if (this.status === 0) {
-    this.status = "BLANK"
-  } else if (this.status === 1) {
+  if (this.status <= 1) {
     this.status = "BLANK"
   } else if (this.status === 2) {
     this.status = "MISS"
