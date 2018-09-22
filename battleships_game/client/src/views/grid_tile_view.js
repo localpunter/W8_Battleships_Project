@@ -9,24 +9,31 @@ const GridTileView = function (container, id, status) {
 };
 
 GridTileView.prototype.bindEvents = function () {
-  this.handleStatus()
-  const gridTile = createAndAppend('td', this.id, this.status, this.container);
+  const gridTile = createAndAppend('td', this.id, '', this.container);
+
+  this.handleStatus(gridTile)
   gridTile.addEventListener('click', (event) => {
     this.handleClick(event);
   });
 };
 
-GridTileView.prototype.handleClick = function (event) {
-  PubSub.publish('GridTileView:tile-clicked', event.target.id);  //pass id here event.target.id??
+GridTileView.prototype.handleClick = function () {
+  PubSub.publish('GridTileView:tile-clicked', this.id);  //pass id here event.target.id??
 };
 
-GridTileView.prototype.handleStatus = function () {
+GridTileView.prototype.handleStatus = function (parent) {
   if (this.status <= 1) {
-    this.status = "BLANK"
+    const src = 'css/images/sea.jpeg';
+    const emptyImage = createAndAppend('img', null, '', parent);
+    emptyImage.src = src;
   } else if (this.status === 2) {
-    this.status = "MISS"
+    const src = 'css/images/miss1.jpg';
+    const missImage = createAndAppend('img', null, '', parent);
+    missImage.src = src;
   } else if (this.status === 3) {
-    this.status = "HIT"
+    const src = 'css/images/hit.jpg';
+    const hitImage = createAndAppend('img', null, '', parent);
+    hitImage.src = src;
   }
 };
 
