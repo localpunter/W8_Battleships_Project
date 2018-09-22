@@ -10,7 +10,7 @@ const Game = function (container, gamestate) {
 };
 
 Game.prototype.bindEvents = function () {
-  PubSub.subscribe('Setup:table-ready', (event) => {
+  PubSub.subscribe('IntermediateView:to-player2', (event) => {
     console.log("game subscribed to setup table ready");
     console.log("gamestate passed", event.detail);
     this.gamestate = event.detail;
