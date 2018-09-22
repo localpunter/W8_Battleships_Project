@@ -40,6 +40,15 @@ Setup.prototype.bindEvents = function () {
       PubSub.publish('Setup:table-ready', this.gamestate);
     }
   });
+  PubSub.subscribe('ResultView:play-again', (event) => {
+    console.log('receiving play again');
+    console.log('event detail from play-again',event.detail);
+    if (event.detail) {
+      this.counter = 0
+      this.reset();
+      this.render();
+    }
+  })
 };
 
 Setup.prototype.render = function () {
@@ -48,5 +57,17 @@ Setup.prototype.render = function () {
   const formView = new FormView(this.container, this.gamestate);
   formView.render();
 }
+
+Setup.prototype.reset = function () {
+  //set all the tiles to empty
+  this.counter = 0
+  for (let i = 0; i < this.gamestate.length; i++) {
+
+    for (let j = 0; j < this.gamestate[i].length; j++) {
+      this.gamestate[i][j] = 0
+    }
+  }
+
+};
 
 module.exports = Setup;

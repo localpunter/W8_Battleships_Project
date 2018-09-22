@@ -1,5 +1,6 @@
 const PubSub = require('../helpers/pub_sub.js');
 const createAndAppend = require('../helpers/create_append.js');
+// const emptyImage = require('../../public/css/images')
 
 const FormTileView = function (container, id, status) {
   this.container = container;
@@ -9,22 +10,30 @@ const FormTileView = function (container, id, status) {
 };
 
 FormTileView.prototype.bindEvents = function () {
-  this.handleStatus()
-  const formTile = createAndAppend('td', this.id, this.status, this.container);
+
+  const formTile = createAndAppend('td', this.id, '', this.container);
+  this.handleStatus(formTile)
   formTile.addEventListener('click', (event) => {
     this.handleClick(event);
   });
 };
 
-FormTileView.prototype.handleClick = function (event) {
-  PubSub.publish('FormTileView:tile-clicked', event.target.id);  //pass id here event.target.id??
+FormTileView.prototype.handleClick = function () {
+  console.log('target.id',event.target.id);
+  PubSub.publish('FormTileView:tile-clicked', this.id);  //pass id here event.target.id??
 };
 
-FormTileView.prototype.handleStatus = function () {
+FormTileView.prototype.handleStatus = function (parent) {
   if (this.status === 0) {
-    this.status = "Empty"
+    const src = 'css/images/sea.jpeg';
+    const emptyImage = createAndAppend('img', null, '', parent);
+    emptyImage.src = src;
+
   } else {
-    this.status = "Ship"
+    // this.status = "Ship"
+    const src = 'css/images/ship.jpeg';
+    const shipImage = createAndAppend('img', null, '', parent);
+    shipImage.src = src;
   }
 };
 

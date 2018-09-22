@@ -11,8 +11,6 @@ const Game = function (container, gamestate) {
 
 Game.prototype.bindEvents = function () {
   PubSub.subscribe('IntermediateView:to-player2', (event) => {
-    console.log("game subscribed to setup table ready");
-    console.log("gamestate passed", event.detail);
     this.gamestate = event.detail;
     this.render();
   });
@@ -73,6 +71,22 @@ Game.prototype.bindEvents = function () {
     //but think that was an extension
 
   });
+
+  PubSub.subscribe('ResultView:play-again', (event) => {
+
+    if (event.detail) {
+      this.hitCounter = 0;
+    }
+  });
+};
+
+
+Game.prototype.handleNewGame = function () {
+  PubSub.subscribe('ResultView:play-again', (event) => {
+    if (event.details) {
+      console.log('gamestate in game', this.gamestate, this.hitCounter, this.attemptsLeft);
+    }
+  })
 };
 
 Game.prototype.render = function () {

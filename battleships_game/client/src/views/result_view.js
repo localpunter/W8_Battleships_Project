@@ -9,8 +9,9 @@ const ResultView = function () {
 ResultView.prototype.bindEvents = function () {
   console.log('ResultView working');
   PubSub.subscribe('Game:result', (event) => {
-    this.attemptsLeft = event.detail
-    this.handleResult()
+    this.attemptsLeft = event.detail;
+    this.handleResult();
+    this.playAgain();
   });
 };
 
@@ -25,6 +26,10 @@ ResultView.prototype.handleResult = function () {
 
 ResultView.prototype.playAgain = function () {
   // for the extensions, but this will be the place to implement the play again button
+  const button = createAndAppend('button', 'play-again', 'play again', this.container);
+  button.addEventListener('click', () => {
+    PubSub.publish('ResultView:play-again', true)
+  })
 };
 
 module.exports = ResultView;
