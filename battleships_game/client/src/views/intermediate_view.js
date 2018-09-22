@@ -11,8 +11,8 @@ IntermediateView.prototype.bindEvents = function () {
     this.container.innerHTML = '';
     const info = "Player 2, your mission is to destroy the five ships that Player 1 has hidden. You have 15 attemps. Good luck!"
     const intermediateViewInfo = createAndAppend('h3', 'intermediateViewInfo', info, this.container)
-    const player2Button = createAndAppend('Button', 'player2Button', 'Destroy!', this.container)
-    player2Button.addEventListener('click', () => {
+    const destroyButton = createAndAppend('Button', 'destroy-button', 'Destroy!', this.container)
+    destroyButton.addEventListener('click', () => {
       this.handleClick();
     })
   })

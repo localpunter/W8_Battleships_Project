@@ -1,0 +1,34 @@
+
+#destroy-button{
+  color: #f44336;
+  font-size: 16px;
+  border-radius: 8px;
+  width: 250px;
+  height: 60px;
+  margin: 5px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+#destroy-button:hover{
+  background-color: red;
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#play-again{
+  color: #3333ff;
+  font-size: 16px;
+  border-radius: 8px;
+  width: 250px;
+  height: 60px;
+  margin: 5px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+#play-again:hover{
+  background-color: #80b3ff;
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}

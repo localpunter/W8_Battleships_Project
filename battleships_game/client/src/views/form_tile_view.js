@@ -1,6 +1,5 @@
 const PubSub = require('../helpers/pub_sub.js');
 const createAndAppend = require('../helpers/create_append.js');
-// const emptyImage = require('../../public/css/images')
 
 const FormTileView = function (container, id, status) {
   this.container = container;
@@ -10,7 +9,7 @@ const FormTileView = function (container, id, status) {
 };
 
 FormTileView.prototype.bindEvents = function () {
-
+  // const wrapper = createAndAppend('div', 'table-wrapper', '', this.container)
   const formTile = createAndAppend('td', this.id, '', this.container);
   this.handleStatus(formTile)
   formTile.addEventListener('click', (event) => {
@@ -19,7 +18,7 @@ FormTileView.prototype.bindEvents = function () {
 };
 
 FormTileView.prototype.handleClick = function () {
-  console.log('target.id',event.target.id);
+  // console.log('target.id',event.target.id);
   PubSub.publish('FormTileView:tile-clicked', this.id);  //pass id here event.target.id??
 };
 
