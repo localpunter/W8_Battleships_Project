@@ -44,7 +44,6 @@ Setup.prototype.bindEvents = function () {
     console.log('receiving play again');
     console.log('event detail from play-again',event.detail);
     if (event.detail) {
-      this.counter = 0
       this.reset();
       this.render();
     }

@@ -76,6 +76,8 @@ Game.prototype.bindEvents = function () {
 
     if (event.detail) {
       this.hitCounter = 0;
+      this.attemptsLeft = 15;
+      // remember to change this if we change the number of atems depending on size and ships
     }
   });
 };
