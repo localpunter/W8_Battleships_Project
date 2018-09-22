@@ -28,7 +28,7 @@ ResultView.prototype.playAgain = function () {
   // for the extensions, but this will be the place to implement the play again button
   const button = createAndAppend('button', 'play-again', 'play again', this.container);
   button.addEventListener('click', () => {
-    console.log('play again clicked');
+    PubSub.publish('ResultView:play-again', true)
   })
 };
 
