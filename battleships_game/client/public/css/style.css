@@ -1,0 +1,12 @@
+td {
+  width: 50px;
+  height: 50px;
+  border: 1px solid green;
+  text-align: center;
+}
+
+td:hover {
+  background: green;
+  color: white;
+  font-weight: bold;
+}
