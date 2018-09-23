@@ -1,15 +1,21 @@
-#form-table{
-  border-spacing: 0px;
+table img {
+  border: 1px solid lightblue;
+  width: 100%;
 }
 
-#form-table img{
-  border: 1px solid lightblue;
-  width: 100px;
-  height: 60px;
+table {
+  width: 95%;
 }
+
 
 #form-table td:hover {
   background: lightblue;
   cursor: url(http://icons.iconarchive.com/icons/aha-soft/free-game/24/Anchor-icon.png), auto;
   /* cursor: url(http://icons.iconarchive.com/icons/messbook/outdated/32/Ship-Wheel-icon.png), auto; */
+}
+
+#grid-table td:hover {
+  background: red;
+  color: white;
+  cursor: url(http://icons.iconarchive.com/icons/iconsmind/outline/32/Target-icon.png), auto;
 }
