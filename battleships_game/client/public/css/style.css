@@ -5,7 +5,15 @@
 }
 
 h1 {
-  font-family: 'Ruso One', sans-serif;
+  font-family: 'Oswald', sans-serif;
+  font-size: 3em;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0.3em;
+  color: white;
+  background: linear-gradient(45deg, rgba(48,48,48,1) 0%, rgba(54,54,54,1) 48%, rgba(13,13,13,1) 100%);
+  border-radius: 0.2em;
 }
 
 h3 {
