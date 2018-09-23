@@ -3,3 +3,11 @@
 	flex-wrap: wrap;
 	justify-content: center;
 }
+
+h1 {
+  font-family: 'Ruso One', sans-serif;
+}
+
+h3 {
+  font-family: 'Open Sans', sans-serif;
+}
