@@ -7,7 +7,8 @@
 body {
   background-image: url('images/battleship-background.jpg');
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
+
 }
 
 h1 {
@@ -22,8 +23,20 @@ h1 {
   border-radius: 0.2em;
 }
 
+h2 {
+  font-size: 1.8em;
+}
+
 h3 {
+  font-size: 1.5em;
+}
+
+h3, h2 {
   font-family: 'Open Sans', sans-serif;
   margin-left: 3%;
   margin-right: 3%;
+  padding: 0.6em;
+  border-radius: 0.1em;
+  color: white;
+  background: rgba(0, 127, 255,0.5);
 }
