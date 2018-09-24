@@ -53,7 +53,7 @@ Game.prototype.bindEvents = function () {
 //       // remember to change this if we change the number of atems depending on size and ships
 //     }
 //   });
-// };
+};
 
 Game.prototype.updateGameState = function (gamestate, attemptCounter, hitCounter) {
   attemptCounter += 1;
