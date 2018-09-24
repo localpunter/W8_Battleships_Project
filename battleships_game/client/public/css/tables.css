@@ -8,7 +8,9 @@ table {
   width: 95%;
 }
 
-
+#form1, #form2{
+  margin: 30px;
+}
 #form-table td:hover {
   background: lightblue;
   cursor: url(http://icons.iconarchive.com/icons/aha-soft/free-game/24/Anchor-icon.png), auto;
