@@ -12,11 +12,13 @@ const FormView = function (container, gamestate1, gamestate2, turn) {
 FormView.prototype.render = function (event) {
   console.log('form view rendering');
 
-  const info = ""
-  createAndAppend('h3', 'game-info', info , this.container)
+  const info = "place your ships here"
+
 
   const form1 = createAndAppend('div', 'form1', '' , this.container)
+  createAndAppend('h3', 'game-info', `Player 1 ${info}` , form1)
   const form2 = createAndAppend('div', 'form2', '' , this.container)
+  createAndAppend('h3', 'game-info', `Player 2 ${info}` , form2)
 
   const formTable1 = createAndAppend('table', 'form-table', '', form1)
   for (let i = 0; i < this.gamestate1.length; i++) {
