@@ -1,7 +1,15 @@
 table img {
   border: 1px solid lightblue;
-  width: 100%; max-width: 250px;
-  height: 100%; max-height: 250px;
+  /* width: 100%; max-width: 200px;
+  height: 100%; max-height: 200px; */
+  width: 4em;
+  height: 4em;
+}
+
+td{
+  width: 70px;
+  margin-left: 35px;
+  margin-right: 35px;
 }
 
 table {
@@ -21,8 +29,8 @@ table {
 
 #form-table td:hover {
   background: lightblue;
-  width: auto;
-  height: auto;
+  /* width: auto; */
+  /* height: auto; */
   cursor: url(http://icons.iconarchive.com/icons/aha-soft/free-game/24/Anchor-icon.png), auto;
   /* cursor: url(http://icons.iconarchive.com/icons/messbook/outdated/32/Ship-Wheel-icon.png), auto; */
 }
