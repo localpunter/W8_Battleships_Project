@@ -1,23 +1,25 @@
 const PubSub = require('../helpers/pub_sub.js');
 const createAndAppend = require('../helpers/create_append.js');
 
-const GridTileView = function (container, id, status) {
+const GridTileView = function (container, id, status, turn) {
   this.container = container;
   this.id = id;
   this.status = status;
+  this.turn = turn;
 };
 
 GridTileView.prototype.bindEvents = function () {
   const gridTile = createAndAppend('td', this.id, '', this.container);
-
-  this.handleStatus(gridTile)
-  gridTile.addEventListener('click', (event) => {
-    this.handleClick(event);
-  });
+  this.handleStatus(gridTile);
+  if (this.turn === parseInt(this.id[0])) {
+    gridTile.addEventListener('click', (event) => {
+      this.handleClick(event);
+    });
+  }
 };
 
 GridTileView.prototype.handleClick = function () {
-  PubSub.publish('GridTileView:tile-clicked', this.id);  //pass id here event.target.id??
+  PubSub.publish('GridTileView:tile-clicked', this.id);
 };
 
 GridTileView.prototype.handleStatus = function (parent) {
