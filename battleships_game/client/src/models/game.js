@@ -1,12 +1,14 @@
 const PubSub = require('../helpers/pub_sub.js');
 const GridView = require('../views/grid_view.js')
 
-const Game = function (container, gamestate) {
+const Game = function (container, gamestatePlayer1, gamestatePlayer2) {
   this.container = container;
   this.attemptCounter = 0; //I'm not sure if we need it or just the attemps left(maybe for stadistics?)
   this.attemptsLeft = 15 ; // We can change this, just a number to try
   this.hitCounter = 0;
-  this.gamestate = gamestate; // this will later be updated by setup
+  this.gamestatePlayer1 = gamestatePlayer1; // this will later be updated by setup
+  this.gamestatePlayer2 = gamestatePlayer2;
+  this.turn = []; // it will have [1, 2], meaning player 1 and player 2, first turn will get it from setup
 };
 
 Game.prototype.bindEvents = function () {
