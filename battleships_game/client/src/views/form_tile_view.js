@@ -11,9 +11,11 @@ const FormTileView = function (container, id, status, turn) {
 FormTileView.prototype.bindEvents = function () {
   const formTile = createAndAppend('td', this.id, '', this.container);
   this.handleStatus(formTile)
-  formTile.addEventListener('click', (event) => {
-    this.handleClick(event);
-  });
+  if (this.turn === parseInt(this.id[0])) {
+    formTile.addEventListener('click', (event) => {
+      this.handleClick(event);
+    });
+  }
 };
 
 FormTileView.prototype.handleClick = function () {
