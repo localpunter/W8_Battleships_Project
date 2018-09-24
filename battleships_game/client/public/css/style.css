@@ -1,0 +1,42 @@
+#container{
+  display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+body {
+  background-image: url('images/battleship-background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 3em;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0.3em;
+  color: white;
+  background: linear-gradient(45deg, rgba(48,48,48,1) 0%, rgba(54,54,54,1) 48%, rgba(13,13,13,1) 100%);
+  border-radius: 0.2em;
+}
+
+h2 {
+  font-size: 1.8em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+h3, h2 {
+  font-family: 'Open Sans', sans-serif;
+  margin-left: 3%;
+  margin-right: 3%;
+  padding: 0.6em;
+  border-radius: 0.1em;
+  color: white;
+  background: rgba(0, 127, 255,0.5);
+}

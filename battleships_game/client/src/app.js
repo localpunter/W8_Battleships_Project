@@ -1,5 +1,8 @@
 const Game = require('./models/game.js');
 const Setup = require('./models/setup.js');
+const ResultView = require('./views/result_view.js');
+const IntermediateView = require('./views/intermediate_view.js');
+const createGamestate = require('./helpers/gamestate.js');
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -7,24 +10,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const container = document.querySelector('#container');
 
-  const gamestate = [];
-  const gridSize = 6;
-  const defaultGridEntry = 0;
-  for (let i = 0; i < gridSize; i++) {
-    const row = [];
-    for (let j = 0; j < gridSize; j++) {
-      row.push(defaultGridEntry);
-    }
-    gamestate.push(row);
-  }
-  console.log(gamestate);
+  // const gamestate = [];
+  // const gridSize = 6;
+  // const defaultGridEntry = 0;
+  // for (let i = 0; i < gridSize; i++) {
+  //   const row = [];
+  //   for (let j = 0; j < gridSize; j++) {
+  //     row.push(defaultGridEntry);
+  //   }
+  //   gamestate.push(row);
+  // }
+  // console.log(gamestate);
+  const gamestatePlayer1 = createGamestate(6)
+  const gamestatePlayer2 = createGamestate(6)
 
-  const setup = new Setup(container, gamestate);
+  console.log('gamestates:',gamestatePlayer1, gamestatePlayer2);
+
+  const setup = new Setup(container, gamestatePlayer1, gamestatePlayer2);
   setup.bindEvents();
   setup.render();
 
-  const game = new Game(container, gamestate);
+  const intermediateView = new IntermediateView(container, gamestatePlayer1, gamestatePlayer2);
+  intermediateView.bindEvents();
+
+  const game = new Game(container, gamestatePlayer1, gamestatePlayer2);
   game.bindEvents();
-  game.render(); //this will be removed later as action depends on setup
+  // game.render(); //this will be removed later as action depends on setup
+
+  const result = new ResultView(container);
+  result.bindEvents();
 
 });

@@ -1,78 +1,116 @@
 const PubSub = require('../helpers/pub_sub.js');
 const GridView = require('../views/grid_view.js')
 
-const Game = function (container, gamestate) {
+const Game = function (container, gamestatePlayer1, gamestatePlayer2) {
   this.container = container;
-  this.attemptCounter = 0;
-  this.hitCounter = 0;
-  this.gamestate = gamestate; // this will later be updated by setup
+  this.attemptCounterPlayer1 = 0;
+  this.attemptCounterPlayer2 = 0;
+  this.hitCounterPlayer1 = 0;
+  this.hitCounterPlayer2 = 0;
+  this.gamestatePlayer1 = gamestatePlayer1;
+  this.gamestatePlayer2 = gamestatePlayer2;
+  this.turn = 1;
+  this.id;
 };
 
 Game.prototype.bindEvents = function () {
-  PubSub.subscribe('Setup:table-ready', (event) => {
+
+  PubSub.subscribe('IntermediateView:game-ready', (event) => {
+    this.gamestatePlayer1 = event.detail[0];
+    this.gamestatePlayer2 = event.detail[1];
+    this.render();
   });
+
+  //should be working
   PubSub.subscribe('GridTileView:tile-clicked', (event) => {
-    this.attemptCounter += 1;
-    // get id from event
-    const tileIdString = "00";
-    //dummy - this will depend on what is published
-    //will come as a string though so need to convert
-    const tileRow = parseInt(tileIdString[0]);
-    const tileCol = parseInt(tileIdString[1]);
-    console.log(tileRow);
-    //check current state of corresponding tile
-    const currentState = this.gamestate[tileRow][tileCol];
-    // change state of tile accordingly
-    //this may need to change depending on coding for states
-    // i assume for now there are 4 which are:
-    // 0 = no boat - no attempted bombing
-    // 1 = no boat - attempted bombing [MISS]
-    // 2 = boat - no attempted bombing
-    // 3 = boat - attempted bombing [HIT]
-    if (currentState === 0) {
-      // 0 = no boat - no attempted bombing
-      // so change to 1 as now no boat [MISS]
-      // no change to counter as missed
-      this.gamestate[tileRow][tileCol] = 1;
-    } else if (currentState === 1) {
-      // 1 = no boat - attempted bombing [MISS]
-      // so no change as attempted same tile as previous MISS
-      // no change to counter as still a MISS
-    } else if (currentState === 2) {
-      // 2 = boat - no attempted bombing
-      // so change to 3 as hit boat [HIT]
-      // and add to counter
-      this.gamestate[tileRow][tileCol] = 3;
-      this.hitCounter += 1;
-    } else if (currentState === 3) {
-      // 3 = boat - attempted bombing [HIT]
-      // so no change as attempted same tile as previous HIT
-      // no change to counter as still a HIT
-    }
-    // now check counter is not over number of ships required
-    // dummy 1 used for now to check functionality
-    // intended to be 5 for MVP - if we use 5 ships of size 1
-    if (this.hitCounter < 1) {
-      // then continue to render game until enough hits
-      this.render(this.gamestate);
+    this.id = event.detail
+    const tileRow = parseInt(this.id[1]);
+    const tileCol = parseInt(this.id[2]);
+
+    if (this.turn === 1) {
+      //do stuff on gamestatePlayer1
+      // if the tile has been used already doesn't do anything, just when is 0 or 1
+      if (this.gamestatePlayer1[tileRow][tileCol] < 2) {
+        this.updateGameState();
+        this.turn = 2;
+      }
+
     } else {
-      // enough hits so deal with finish game
-      this.hitAllBoats();
+      if (this.gamestatePlayer2[tileRow][tileCol] < 2) {
+        this.updateGameState();
+        this.turn = 1;
+      }
     }
 
-    //could also check attemptCounter here is we want to end the game that way
-    //but think that was an extension
 
+  });
+
+
+  PubSub.subscribe('ResultView:play-again', (event) => {
+
+    if (event.detail) {
+      this.attemptCounterPlayer1 = 0; //I'm not sure if we need it or just the attemps left(maybe for stadistics?)
+      this.attemptCounterPlayer2 = 0;
+      this.hitCounterPlayer1 = 0;
+      this.hitCounterPlayer2 = 0;
+      this.turn = []
+      // remember to change this if we change the number of attempts depending on size and ships
+    }
   });
 };
 
+Game.prototype.updateGameState = function (gamestate, attemptCounter, hitCounter) {
+
+  if (this.turn === 1) {
+    if (this.gamestatePlayer1[tileRow][tileCol] === 0) {
+      this.attemptCounterPlayer1 += 1;
+      this.gamestatePlayer1[tileRow][tileCol] = 2;
+    } else if (this.gamestatePlayer1[tileRow][tileCol] === 1) {
+      this.gamestatePlayer1[tileRow][tileCol] = 3;
+      this.hitCounterPlayer1 += 1;
+    }
+    if (this.hitCounterPlayer1 < 5) {
+      this.render();
+    } else {
+      this.result();
+    }
+
+
+  } else if (this.turn === 2) {
+    if (this.gamestatePlayer2[tileRow][tileCol] === 0) {
+      this.attemptCounterPlayer2 += 1;
+      this.gamestatePlayer2[tileRow][tileCol] = 2;
+    } else if (this.gamestatePlayer2[tileRow][tileCol] === 1) {
+      this.gamestatePlayer2[tileRow][tileCol] = 3;
+      this.hitCounterPlayer2 += 1;
+    }
+    if (this.hitCounterPlayer2 < 5) {
+      this.render();
+    } else {
+      this.result();
+    }
+  }
+
+};
+
+// Game.prototype.handleNewGame = function () {
+//   PubSub.subscribe('ResultView:play-again', (event) => {
+//     if (event.details) {
+//       console.log('gamestate in game', this.gamestate, this.hitCounter, this.attemptsLeft);
+//     }
+//   })
+// };
+
 Game.prototype.render = function () {
+  this.container.innerHTML = '';
   console.log('game rendering');
-  const gridView = new GridView(this.container, this.gamestate);
+  const gridView = new GridView(this.container, this.gamestatePlayer1, this.gamestatePlayer2);
   gridView.render();
 }
 
-Game.prototype.hitAllBoats = function () {
+
+Game.prototype.result = function () {
+  PubSub.publish('Game:result', this.turn )
 }
 
 module.exports = Game;
