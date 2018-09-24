@@ -21,7 +21,7 @@ ResultView.prototype.handleResult = function () {
   if (this.turn === 1) {
     createAndAppend('h2', 'result', 'Player 1 knows how to hide stuff! Player 1 wins!', this.container)
   } else {
-    createAndAppend('h2', 'result', `Player 2 is litterally on fire! Oh wait, that's Player 1 ships! Player 2 wins!`, this.container)
+    createAndAppend('h2', 'result', `Player 2 is literally on fire! Oh wait, that's Player 1 ships! Player 2 wins!`, this.container)
   }
 };
 
