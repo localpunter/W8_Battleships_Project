@@ -19,7 +19,7 @@ GridView.prototype.render = function (event) {
   const gridTable = createAndAppend('table', 'grid-table', '', this.container);
   console.log(this.gamestate);
   for (let i = 0; i < this.gamestate.length; i++) {
-    const row = createAndAppend('div', null , '', gridTable);
+    const row = createAndAppend('tr', null , '', gridTable);
     for (let j = 0; j < this.gamestate[0].length; j++) {
       const gameTileView = new GridTileView(row, i.toString() + j.toString(), this.gamestate[i][j]);
       gameTileView.bindEvents();
