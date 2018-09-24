@@ -14,10 +14,13 @@ const Game = function (container, gamestatePlayer1, gamestatePlayer2) {
 };
 
 Game.prototype.bindEvents = function () {
-  PubSub.subscribe('IntermediateView:to-player2', (event) => {
-    this.gamestate = event.detail;
-    this.render();
-  });
+  // Needs to be changed
+  // PubSub.subscribe('IntermediateView:to-player2', (event) => {
+  //   this.gamestate = event.detail;
+  //   this.render();
+  // });
+
+  //should be working
   PubSub.subscribe('GridTileView:tile-clicked', (event) => {
     this.turn = event.detail.turn
     const tileRow = parseInt(tileIdString[1]);
@@ -41,15 +44,16 @@ Game.prototype.bindEvents = function () {
 
   });
 
-  PubSub.subscribe('ResultView:play-again', (event) => {
-
-    if (event.detail) {
-      this.hitCounter = 0;
-      this.attemptsLeft = 15;
-      // remember to change this if we change the number of atems depending on size and ships
-    }
-  });
-};
+ //Needs to be changed
+//   PubSub.subscribe('ResultView:play-again', (event) => {
+//
+//     if (event.detail) {
+//       this.hitCounter = 0;
+//       this.attemptsLeft = 15;
+//       // remember to change this if we change the number of atems depending on size and ships
+//     }
+//   });
+// };
 
 Game.prototype.updateGameState = function (gamestate, attemptCounter, hitCounter) {
   attemptCounter += 1;
@@ -100,25 +104,25 @@ Game.prototype.updateGameState = function (gamestate, attemptCounter, hitCounter
 
 };
 
-Game.prototype.handleNewGame = function () {
-  PubSub.subscribe('ResultView:play-again', (event) => {
-    if (event.details) {
-      console.log('gamestate in game', this.gamestate, this.hitCounter, this.attemptsLeft);
-    }
-  })
-};
+// Game.prototype.handleNewGame = function () {
+//   PubSub.subscribe('ResultView:play-again', (event) => {
+//     if (event.details) {
+//       console.log('gamestate in game', this.gamestate, this.hitCounter, this.attemptsLeft);
+//     }
+//   })
+// };
 
 Game.prototype.render = function () {
   this.container.innerHTML = '';
   console.log('game rendering');
-  const gridView = new GridView(this.container, this.gamestate, this.attemptsLeft);
-  console.log('attemptsLeft:', this.attemptsLeft);
+  const gridView = new GridView(this.container, this.gamestatePlayer1, this.gamestatePlayer2);
   gridView.render();
 }
 
-Game.prototype.result = function () {
-  // Publish to a ResultView, if attemptsLeft < 1 player 1 wins, otherwise player 2
-  PubSub.publish('Game:result', this.attemptsLeft )
-}
+// Needs to be completly changed
+// Game.prototype.result = function () {
+//   // Publish to a ResultView, if attemptsLeft < 1 player 1 wins, otherwise player 2
+//   PubSub.publish('Game:result', this.attemptsLeft )
+// }
 
 module.exports = Game;
