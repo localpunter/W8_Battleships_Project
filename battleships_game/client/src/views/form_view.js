@@ -12,12 +12,11 @@ const FormView = function (container, gamestate1, gamestate2, turn) {
 FormView.prototype.render = function (event) {
   console.log('form view rendering');
 
-  const info = "Welcome to Battleships player 1, your mission is to hide your ships well in this grid so that you can emerge victorious from the rage of player 2. You have 5 ships to place and to do it you just have to click at the tiles"
+  const info = "Welcome to Battleships! Your mission is to hide your ships well so that you can emerge victorious from the rage of your opponent. You have 5 ships to place and to do it you just have to click at the tiles."
   createAndAppend('h3', 'game-info', info , this.container)
 
   form1 = createAndAppend('div', 'form1', '' , this.container)
   form2 = createAndAppend('div', 'form2', '' , this.container)
-
 
   const formTable1 = createAndAppend('table', 'form-table', '', form1)
   for (let i = 0; i < this.gamestate1.length; i++) {
@@ -25,8 +24,8 @@ FormView.prototype.render = function (event) {
     for (let j = 0; j < this.gamestate1[0].length; j++) {
       const formTileView = new FormTileView(row, "1" + i.toString() + j.toString(), this.gamestate1[i][j], this.turn);
       formTileView.bindEvents();
-    }
-  }
+    };
+  };
 
   const formTable2 = createAndAppend('table', 'form-table', '', form2)
   for (let i = 0; i < this.gamestate2.length; i++) {
@@ -34,10 +33,8 @@ FormView.prototype.render = function (event) {
     for (let j = 0; j < this.gamestate2[0].length; j++) {
       const formTileView = new FormTileView(row, "2" + i.toString() + j.toString(), this.gamestate2[i][j], this.turn);
       formTileView.bindEvents();
-    }
-  }
-
+    };
+  };
 };
-
 
 module.exports = FormView;
