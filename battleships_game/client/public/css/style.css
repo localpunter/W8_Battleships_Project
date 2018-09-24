@@ -25,10 +25,23 @@ h1 {
 
 h2 {
   font-size: 1.8em;
+  background-color: #4BB543;
+  display: inline-block;
+  font-variant: small-caps;
+  text-align: center;
+}
+
+#turn-info {
+  position: fixed;
+  float: left;
+  top: 5%;
+  width: 100%;
+  margin: 0%;
 }
 
 h3 {
   font-size: 1.5em;
+  background: rgba(0, 127, 255,0.5);
 }
 
 h3, h2 {
@@ -38,5 +51,4 @@ h3, h2 {
   padding: 0.6em;
   border-radius: 0.1em;
   color: white;
-  background: rgba(0, 127, 255,0.5);
 }
