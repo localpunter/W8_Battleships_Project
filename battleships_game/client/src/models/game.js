@@ -32,12 +32,14 @@ Game.prototype.bindEvents = function () {
       // if the tile has been used already doesn't do anything, just when is 0 or 1
       if (this.gamestatePlayer1[tileRow][tileCol] < 2) {
         this.updateGameState();
+        console.log('gamestate player 1', this.gamestatePlayer1);
         this.turn = 2;
       }
 
     } else {
       if (this.gamestatePlayer2[tileRow][tileCol] < 2) {
         this.updateGameState();
+        console.log('gamestate player 2', this.gamestatePlayer2);
         this.turn = 1;
       }
     }
@@ -59,7 +61,10 @@ Game.prototype.bindEvents = function () {
   });
 };
 
-Game.prototype.updateGameState = function (gamestate, attemptCounter, hitCounter) {
+Game.prototype.updateGameState = function () {
+
+  const tileRow = parseInt(this.id[1]);
+  const tileCol = parseInt(this.id[2]);
 
   if (this.turn === 1) {
     if (this.gamestatePlayer1[tileRow][tileCol] === 0) {
