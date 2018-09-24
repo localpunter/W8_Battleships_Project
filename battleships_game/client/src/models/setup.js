@@ -7,7 +7,7 @@ const Setup = function (container, gamestatePlayer1, gamestatePlayer2) {
   this.counterPlayer2 = 0;
   this.gamestatePlayer1 = gamestatePlayer1;
   this.gamestatePlayer2 = gamestatePlayer2;
-  this.turn = [];
+  this.turn = 1;
 };
 
 Setup.prototype.bindEvents = function () {
@@ -75,7 +75,7 @@ Setup.prototype.updateGamestate = function (gamestate, counter) {
 Setup.prototype.render = function () {
   this.container.innerHTML = '';
   console.log('set up rendering');
-  const formView = new FormView(this.container, this.gamestate);
+  const formView = new FormView(this.container, this.gamestatePlayer1, this.gamestatePlayer2);
   formView.render();
 }
 
