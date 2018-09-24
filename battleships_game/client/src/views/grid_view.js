@@ -13,11 +13,12 @@ const GridView = function (container, gamestatePlayer1, gamestatePlayer2, turn) 
 GridView.prototype.render = function (event) {
 
   //info
-  const info = ""
-  createAndAppend('h3', 'player-2-info', info, this.container)
+  const info = "shoot here"
 
-  const grid1 = createAndAppend('div', 'grid1', '' , this.container);
-  const grid2 = createAndAppend('div', 'grid2', '' , this.container);
+  const grid1 = createAndAppend('div', 'grid1', '', this.container);
+  createAndAppend('h3', 'player-2-info', `Player 2 ${info}`, grid1)
+  const grid2 = createAndAppend('div', 'grid2','' , this.container);
+  createAndAppend('h3', 'player-2-info', `Player 1 ${info}`, grid2)
 
   const gridTable1 = createAndAppend('table', 'grid-table', '', grid1)
   for (let i = 0; i < this.gamestatePlayer1.length; i++) {
