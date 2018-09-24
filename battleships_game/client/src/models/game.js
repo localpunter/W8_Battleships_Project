@@ -44,15 +44,17 @@ Game.prototype.bindEvents = function () {
 
   });
 
- //Needs to be changed
-//   PubSub.subscribe('ResultView:play-again', (event) => {
-//
-//     if (event.detail) {
-//       this.hitCounter = 0;
-//       this.attemptsLeft = 15;
-//       // remember to change this if we change the number of atems depending on size and ships
-//     }
-//   });
+ 
+  PubSub.subscribe('ResultView:play-again', (event) => {
+
+    if (event.detail) {
+      this.attemptCounterPlayer1 = 0; //I'm not sure if we need it or just the attemps left(maybe for stadistics?)
+      this.attemptCounterPlayer2 = 0;
+      this.hitCounterPlayer1 = 0;
+      this.hitCounterPlayer2 = 0;
+      // remember to change this if we change the number of attempts depending on size and ships
+    }
+  });
 };
 
 Game.prototype.updateGameState = function (gamestate, attemptCounter, hitCounter) {
