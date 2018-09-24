@@ -1,6 +1,7 @@
 table img {
   border: 1px solid lightblue;
-  width: 100%;
+  width: 6em;
+  height: 4em;
 }
 
 table {
