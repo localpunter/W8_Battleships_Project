@@ -18,15 +18,14 @@ FormView.prototype.render = function (event) {
   const form1 = createAndAppend('div', 'form1', '' , this.container)
   const form2 = createAndAppend('div', 'form2', '' , this.container)
 
-
   const formTable1 = createAndAppend('table', 'form-table', '', form1)
   for (let i = 0; i < this.gamestate1.length; i++) {
     const row = createAndAppend('tr', null , '', formTable1)
     for (let j = 0; j < this.gamestate1[0].length; j++) {
       const formTileView = new FormTileView(row, "1" + i.toString() + j.toString(), this.gamestate1[i][j], this.turn);
       formTileView.bindEvents();
-    }
-  }
+    };
+  };
 
   const formTable2 = createAndAppend('table', 'form-table', '', form2)
   for (let i = 0; i < this.gamestate2.length; i++) {
@@ -34,10 +33,8 @@ FormView.prototype.render = function (event) {
     for (let j = 0; j < this.gamestate2[0].length; j++) {
       const formTileView = new FormTileView(row, "2" + i.toString() + j.toString(), this.gamestate2[i][j], this.turn);
       formTileView.bindEvents();
-    }
-  }
-
+    };
+  };
 };
-
 
 module.exports = FormView;
