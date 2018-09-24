@@ -24,13 +24,13 @@ FormTileView.prototype.handleClick = function () {
 
 FormTileView.prototype.handleStatus = function (parent) {
   if (this.status === 0) {
-    const src = 'css/images/sea.jpeg';
+    const src = 'css/images/sea.svg';
     const emptyImage = createAndAppend('img', null, '', parent);
     emptyImage.src = src;
 
   } else {
     // this.status = "Ship"
-    const src = 'css/images/ship.jpeg';
+    const src = 'css/images/ship.svg';
     const shipImage = createAndAppend('img', null, '', parent);
     shipImage.src = src;
   }
