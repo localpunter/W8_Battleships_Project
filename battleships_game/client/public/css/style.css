@@ -4,6 +4,17 @@
 	justify-content: center;
 }
 
+#logo {
+    padding: 350px 0 0 0;
+    overflow: hidden;
+    background-image: url("images/battleship_banner.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 0px !important;
+    height /**/:70px;
+}
+
 body {
   background-image: url('images/battleship-background.jpg');
   background-repeat: no-repeat;
@@ -11,18 +22,20 @@ body {
 
 }
 
+
+
 h1 {
   /* font-family: 'Oswald', sans-serif;
   font-size: 3em; */
-  background-image: url('images/battleship_banner.png');
+  /* background-image: url('images/battleship_banner.png');
   background-repeat: no-repeat;
   background-size: cover;
-  text-align: center;
+  text-align: center; */
   /* text-transform: uppercase;
   font-weight: bold;
   padding: 0.3em;
   color: white; */
-  background: linear-gradient(45deg, rgba(48,48,48,1) 0%, rgba(54,54,54,1) 48%, rgba(13,13,13,1) 100%); */
+  /* background: linear-gradient(45deg, rgba(48,48,48,1) 0%, rgba(54,54,54,1) 48%, rgba(13,13,13,1) 100%); */ */
   /* border-radius: 0.2em;
 }
 
