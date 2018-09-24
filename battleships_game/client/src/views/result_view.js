@@ -2,14 +2,14 @@ const PubSub = require('../helpers/pub_sub.js');
 const createAndAppend = require('../helpers/create_append.js');
 
 const ResultView = function () {
-  this.container = container
-  this.turn = []
+  this.container = container;
+  this.turn = 1;
 }
 
 ResultView.prototype.bindEvents = function () {
   console.log('ResultView working');
   PubSub.subscribe('Game:result', (event) => {
-    this.turn = event.detail;
+    this.turn = event.detail.turn;
     console.log('turn:', this.turn);
     this.handleResult();
     this.playAgain();

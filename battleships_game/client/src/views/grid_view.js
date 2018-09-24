@@ -2,18 +2,19 @@ const PubSub = require('../helpers/pub_sub.js');
 const GridTileView = require('./grid_tile_view.js');
 const createAndAppend = require('../helpers/create_append.js');
 
-const GridView = function (container, gamestatePlayer1, gamestatePlayer2, turn) {
+// const GridView = function (container, gamestatePlayer1, gamestatePlayer2, turn) {
+const GridView = function (container, gamestate) {
   this.container = container;
-  this.gamestatePlayer1 = gamestatePlayer1;
-  this.gamestatePlayer2 = gamestatePlayer2;
-  this.turn = turn;
-
+  this.gamestate = gamestate;
+  // this.gamestatePlayer1 = gamestatePlayer1;
+  // this.gamestatePlayer2 = gamestatePlayer2;
+  // this.turn = turn;
 };
 
 GridView.prototype.render = function (event) {
 
   //info
-  createAndAppend('h2', 'turn-info', `Player ${this.turn} turn`, this.container);
+  createAndAppend('h2', 'turn-info', `Player ${this.gamestate.turn} turn`, this.container);
 
   const info = "shoot here";
 
@@ -24,19 +25,19 @@ GridView.prototype.render = function (event) {
   createAndAppend('h3', 'player-2-info', `Player 1 ${info}`, grid2)
 
   const gridTable1 = createAndAppend('table', 'grid-table', '', grid1)
-  for (let i = 0; i < this.gamestatePlayer1.length; i++) {
+  for (let i = 0; i < this.gamestate.player1.length; i++) {
     const row = createAndAppend('tr', null , '', gridTable1)
-    for (let j = 0; j < this.gamestatePlayer1[0].length; j++) {
-      const gridTileView = new GridTileView(row, "1" + i.toString() + j.toString(), this.gamestatePlayer1[i][j], this.turn);
+    for (let j = 0; j < this.gamestate.player1[0].length; j++) {
+      const gridTileView = new GridTileView(row, "1" + i.toString() + j.toString(), this.gamestate.player1[i][j], this.gamestate.turn);
       gridTileView.bindEvents();
     }
   }
 
   const gridTable2 = createAndAppend('table', 'grid-table', '', grid2)
-  for (let i = 0; i < this.gamestatePlayer2.length; i++) {
+  for (let i = 0; i < this.gamestate.player2.length; i++) {
     const row = createAndAppend('tr', null , '', gridTable2)
-    for (let j = 0; j < this.gamestatePlayer2[0].length; j++) {
-      const gridTileView = new GridTileView(row, "2" + i.toString() + j.toString(), this.gamestatePlayer2[i][j], this.turn);
+    for (let j = 0; j < this.gamestate.player2[0].length; j++) {
+      const gridTileView = new GridTileView(row, "2" + i.toString() + j.toString(), this.gamestate.player2[i][j], this.gamestate.turn);
       gridTileView.bindEvents();
     }
   }
