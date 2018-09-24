@@ -14,11 +14,12 @@ const Game = function (container, gamestatePlayer1, gamestatePlayer2) {
 };
 
 Game.prototype.bindEvents = function () {
-  // Needs to be changed
-  // PubSub.subscribe('IntermediateView:to-player2', (event) => {
-  //   this.gamestate = event.detail;
-  //   this.render();
-  // });
+
+  PubSub.subscribe('IntermediateView:game-ready', (event) => {
+    this.gamestatePlayer1 = event.detail[0];
+    this.gamestatePlayer2 = event.detail[1];
+    this.render();
+  });
 
   //should be working
   PubSub.subscribe('GridTileView:tile-clicked', (event) => {
