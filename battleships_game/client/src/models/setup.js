@@ -75,7 +75,7 @@ Setup.prototype.updateGamestate = function (gamestate, counter) {
 Setup.prototype.render = function () {
   this.container.innerHTML = '';
   console.log('set up rendering');
-  const formView = new FormView(this.container, this.gamestatePlayer1, this.gamestatePlayer2);
+  const formView = new FormView(this.container, this.gamestatePlayer1, this.gamestatePlayer2, this.turn);
   formView.render();
 }
 
