@@ -5,7 +5,6 @@ const GridTileView = function (container, id, status) {
   this.container = container;
   this.id = id;
   this.status = status;
-  // pass status from grid_view and the model
 };
 
 GridTileView.prototype.bindEvents = function () {
