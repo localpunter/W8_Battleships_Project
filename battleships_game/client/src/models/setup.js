@@ -68,7 +68,7 @@ Setup.prototype.updateGamestate = function () {
     this.render();
   } else {
     // enough boats set / tiles clicked so publish table ready
-    PubSub.publish('Setup:table-ready', this.gamestatePlayer1, this.gamestatePlayer2);
+    PubSub.publish('Setup:table-ready', [this.gamestatePlayer1, this.gamestatePlayer2]);
   }
 };
 
