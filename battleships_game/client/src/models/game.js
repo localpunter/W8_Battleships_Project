@@ -10,12 +10,15 @@ const Game = function (container, gamestatePlayer1, gamestatePlayer2) {
   this.gamestatePlayer1 = gamestatePlayer1;
   this.gamestatePlayer2 = gamestatePlayer2;
   this.turn = 1; // player2 board active
-  this.id;
+  this.id = "";
 };
 
 Game.prototype.bindEvents = function () {
 
   PubSub.subscribe('IntermediateView:game-ready', (event) => {
+    console.log(event.detail);
+    console.log(event.detail[0]);
+    console.log(event.detail[1]);
     this.gamestatePlayer1 = event.detail[0];
     this.gamestatePlayer2 = event.detail[1];
     this.render();
@@ -49,12 +52,12 @@ Game.prototype.bindEvents = function () {
   PubSub.subscribe('ResultView:play-again', (event) => {
 
     if (event.detail) {
-      this.attemptCounterPlayer1 = 0; //I'm not sure if we need it or just the attemps left(maybe for stadistics?)
+      this.attemptCounterPlayer1 = 0;
       this.attemptCounterPlayer2 = 0;
       this.hitCounterPlayer1 = 0;
       this.hitCounterPlayer2 = 0;
-      this.turn = 1
-      // remember to change this if we change the number of attempts depending on size and ships
+      this.turn = 1; // player2 board active
+      this.id = "";
     }
   });
 };

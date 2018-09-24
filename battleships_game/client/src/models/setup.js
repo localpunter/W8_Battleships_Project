@@ -1,5 +1,6 @@
 const PubSub = require('../helpers/pub_sub.js');
 const FormView = require('../views/form_view.js')
+const createGamestate = require('../helpers/gamestate.js');
 
 const Setup = function (container, gamestatePlayer1, gamestatePlayer2) {
   this.container = container;
@@ -79,14 +80,12 @@ Setup.prototype.render = function () {
 }
 
 Setup.prototype.reset = function () {
-  //set all the tiles to empty
-  this.counter = 0
-  for (let i = 0; i < this.gamestate.length; i++) {
-    for (let j = 0; j < this.gamestate[i].length; j++) {
-      this.gamestate[i][j] = 0
-    }
-  }
-
+  this.counterPlayer1 = 0;
+  this.counterPlayer2 = 0;
+  this.gamestatePlayer1 = createGamestate(6)
+  this.gamestatePlayer2 = createGamestate(6)
+  this.turn = 1;
+  this.id = "";
 };
 
 module.exports = Setup;
