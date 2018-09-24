@@ -24,7 +24,7 @@ FormTileView.prototype.handleClick = function () {
 
 FormTileView.prototype.handleStatus = function (parent) {
   if (this.status === 0) {
-    const src = 'css/images/sea.svg';
+    const src = 'css/images/sea1.svg';
     const emptyImage = createAndAppend('img', null, '', parent);
     emptyImage.src = src;
 
