@@ -12,11 +12,11 @@ const FormView = function (container, gamestate1, gamestate2, turn) {
 FormView.prototype.render = function (event) {
   console.log('form view rendering');
 
-  const info = "Welcome to Battleships player 1, your mission is to hide your ships well in this grid so that you can emerge victorious from the rage of player 2. You have 5 ships to place and to do it you just have to click at the tiles"
+  const info = ""
   createAndAppend('h3', 'game-info', info , this.container)
 
-  form1 = createAndAppend('div', 'form1', '' , this.container)
-  form2 = createAndAppend('div', 'form2', '' , this.container)
+  const form1 = createAndAppend('div', 'form1', '' , this.container)
+  const form2 = createAndAppend('div', 'form2', '' , this.container)
 
 
   const formTable1 = createAndAppend('table', 'form-table', '', form1)

@@ -104,7 +104,7 @@ Game.prototype.updateGameState = function (gamestate, attemptCounter, hitCounter
 Game.prototype.render = function () {
   this.container.innerHTML = '';
   console.log('game rendering');
-  const gridView = new GridView(this.container, this.gamestatePlayer1, this.gamestatePlayer2);
+  const gridView = new GridView(this.container, this.gamestatePlayer1, this.gamestatePlayer2, this.turn);
   gridView.render();
 }
 
