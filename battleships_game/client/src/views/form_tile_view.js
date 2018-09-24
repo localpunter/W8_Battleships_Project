@@ -21,7 +21,7 @@ FormTileView.prototype.handleClick = function () {
 };
 
 FormTileView.prototype.handleStatus = function (parent) {
-  if (this.turn === false) {
+  if (this.turn !== parseInt(this.id[0])) {
     parent.textContent = "HIDDEN";
   } else if (this.status === 0) {
     const src = 'css/images/sea.jpeg';

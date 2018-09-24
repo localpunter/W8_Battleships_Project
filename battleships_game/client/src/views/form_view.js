@@ -20,21 +20,19 @@ FormView.prototype.render = function (event) {
 
 
   const formTable1 = createAndAppend('table', 'form-table', '', form1)
-  const turn1 = this.turn == 1 ? true : false;
   for (let i = 0; i < this.gamestate1.length; i++) {
     const row = createAndAppend('tr', null , '', formTable1)
     for (let j = 0; j < this.gamestate1[0].length; j++) {
-      const formTileView = new FormTileView(row, i.toString() + j.toString(), this.gamestate1[i][j], turn1);
+      const formTileView = new FormTileView(row, "1" + i.toString() + j.toString(), this.gamestate1[i][j], this.turn);
       formTileView.bindEvents();
     }
   }
 
   const formTable2 = createAndAppend('table', 'form-table', '', form2)
-  const turn2 = this.turn == 2 ? true : false;
   for (let i = 0; i < this.gamestate2.length; i++) {
     const row = createAndAppend('tr', null , '', formTable2)
     for (let j = 0; j < this.gamestate2[0].length; j++) {
-      const formTileView = new FormTileView(row, i.toString() + j.toString(), this.gamestate2[i][j], turn2);
+      const formTileView = new FormTileView(row, "2" + i.toString() + j.toString(), this.gamestate2[i][j], this.turn);
       formTileView.bindEvents();
     }
   }

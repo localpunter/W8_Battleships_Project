@@ -8,22 +8,22 @@ const Setup = function (container, gamestatePlayer1, gamestatePlayer2) {
   this.gamestatePlayer1 = gamestatePlayer1;
   this.gamestatePlayer2 = gamestatePlayer2;
   this.turn = 1;
+  this.id;
 };
 
 Setup.prototype.bindEvents = function () {
   PubSub.subscribe('FormTileView:tile-clicked', (event) => {
     console.log("id passed to form", event.detail);
+    this.id = event.detail;
+    this.updateGamestate();
 
-    this.turn = event.detail.turn;
-    if (this.turn === 1 ) {
-      //do stuff in gamestatePlayer1
-      this.updateGamestate(this.gamestatePlayer1, this.counterPlayer1)
-      this.turn = 2
-    } else {
-      //do stuff in gamestatePlayer2
-      this.updateGamestate(this.gamestatePlayer2, this.counterPlayer2)
-      this.turn = 1
-    }
+    // if (this.turn === 1 ) {
+    //   //do stuff in gamestatePlayer1
+    //   this.updateGamestate(this.gamestatePlayer1, this.counterPlayer1)
+    // } else {
+    //   //do stuff in gamestatePlayer2
+    //   this.updateGamestate(this.gamestatePlayer2, this.counterPlayer2)
+    // }
 
 
 
@@ -40,35 +40,53 @@ Setup.prototype.bindEvents = function () {
 };
 
 
-Setup.prototype.updateGamestate = function (gamestate, counter) {
+Setup.prototype.updateGamestate = function () {
+  console.log("updating gamestate");
+// Setup.prototype.updateGamestate = function (gamestate, counter) {
   // check current state of corresponding tile
   // comes as a string though so need to convert
-  const tileIdString = event.detail.info;
-  const tileRow = parseInt(tileIdString[1]);
-  const tileCol = parseInt(tileIdString[2]);
-  const currentState = gamestate[tileRow][tileCol];
+  const tileRow = parseInt(this.id[1]);
+  const tileCol = parseInt(this.id[2]);
+  // const currentState = gamestate[tileRow][tileCol];
 
-  // change state of tile accordingly
-  //this may need to change depending on coding for states
-  // i assume for now there are only 2 - not clicked = 0 or clicked = 1
-  if (currentState === 0) {
-    //so change to clicked = 1 and add to counter of clicked tiles
-    gamestate[tileRow][tileCol] = 1;
-    counter += 1;
-  } else if (currentState === 1) {
-    // so unclicked - so change to not clicked = 0 and reduce counter
-    gamestate[tileRow][tileCol] = 0;
-    counter -= 1;
+  // need to do this directly on object parameters - we were previously not affecting them
+  // may be refactor later - easier with gamestate object
+  if (this.turn === 1) {
+    if (this.gamestatePlayer1[tileRow][tileCol] === 0) {
+      this.gamestatePlayer1[tileRow][tileCol] = 1;
+      this.counterPlayer1 += 1;
+    } else if (this.gamestatePlayer1[tileRow][tileCol] === 1) {
+      this.gamestatePlayer1[tileRow][tileCol] = 0;
+      this.counterPlayer1 -= 1;
+    }
+  } else if (this.turn === 2) {
+    if (this.gamestatePlayer2[tileRow][tileCol] === 0) {
+      this.gamestatePlayer2[tileRow][tileCol] = 1;
+      this.counterPlayer2 += 1;
+    } else if (this.gamestatePlayer1[tileRow][tileCol] === 1) {
+      this.gamestatePlayer2[tileRow][tileCol] = 0;
+      this.counterPlayer2 -= 1;
+    }
+
   }
+
+
+
   // now check counter is not over number of ships required
   // dummy 1 used for now to check functionality
   // intended to be 5 for MVP
-  if (counter < 5) {
+  if (this.counterPlayer1 < 5 || this.counterPlayer2 < 5) {
+    console.log("still setting up");
     // then continue to render form until enough tiles clicked
-    this.render(gamestate);
+    // but first check counter1 and change turn
+    if (this.counterPlayer1 === 5) {
+      console.log("change turn");
+      this.turn = 2;
+    }
+    this.render();
   } else {
     // enough boats set / tiles clicked so publish table ready
-    PubSub.publish('Setup:table-ready', gamestate);
+    PubSub.publish('Setup:table-ready', this.gamestatePlayer1, this.gamestatePlayer2);
   }
 };
 
