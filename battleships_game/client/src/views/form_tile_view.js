@@ -22,7 +22,10 @@ FormTileView.prototype.handleClick = function () {
 
 FormTileView.prototype.handleStatus = function (parent) {
   if (this.turn !== parseInt(this.id[0])) {
-    parent.textContent = "HIDDEN";
+    const src = 'css/images/sea.jpeg';
+    const emptyImage = createAndAppend('img', null, '', parent);
+    emptyImage.src = src;
+
   } else if (this.status === 0) {
     const src = 'css/images/sea.jpeg';
     const emptyImage = createAndAppend('img', null, '', parent);
