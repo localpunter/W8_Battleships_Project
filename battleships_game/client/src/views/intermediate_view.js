@@ -1,15 +1,16 @@
 const PubSub = require('../helpers/pub_sub.js');
 const createAndAppend = require('../helpers/create_append.js');
 
-const IntermediateView = function (container, gamestate) {
+const IntermediateView = function (container, gamestatePlayer1, gamestatePlayer2) {
   this.container = container;
-  this.gamestate = gamestate;
+  this.gamestatePlayer1 = gamestatePlayer1;
+  this.gamestatePlayer2 = gamestatePlayer2;
 };
 
 IntermediateView.prototype.bindEvents = function () {
   PubSub.subscribe('Setup:table-ready', (evt) => {
     this.container.innerHTML = '';
-    const info = "Player 2, your mission is to destroy the five ships that Player 1 has hidden. You have 15 attemps. Good luck!"
+    const info = "Players your mission is to destroy the five ships your opponnent has hidden. Good luck!"
     const intermediateViewInfo = createAndAppend('h3', 'intermediateViewInfo', info, this.container)
     const destroyButton = createAndAppend('Button', 'destroy-button', 'Destroy!', this.container)
     destroyButton.addEventListener('click', () => {
@@ -19,8 +20,8 @@ IntermediateView.prototype.bindEvents = function () {
 };
 
 IntermediateView.prototype.handleClick = function () {
-  console.log('gamestate:',this.gamestate);
-  PubSub.publish('IntermediateView:to-player2', this.gamestate);
+  // console.log('gamestate:',this.gamestate);
+  PubSub.publish('IntermediateView:game-ready', [this.gamestatePlayer1, this.gamestatePlayer2]);
 };
 
 module.exports = IntermediateView;
