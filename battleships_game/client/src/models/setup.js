@@ -83,7 +83,6 @@ Setup.prototype.reset = function () {
   //set all the tiles to empty
   this.counter = 0
   for (let i = 0; i < this.gamestate.length; i++) {
-
     for (let j = 0; j < this.gamestate[i].length; j++) {
       this.gamestate[i][j] = 0
     }
