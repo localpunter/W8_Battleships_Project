@@ -44,7 +44,7 @@ Game.prototype.bindEvents = function () {
 
   });
 
- 
+
   PubSub.subscribe('ResultView:play-again', (event) => {
 
     if (event.detail) {
@@ -52,6 +52,7 @@ Game.prototype.bindEvents = function () {
       this.attemptCounterPlayer2 = 0;
       this.hitCounterPlayer1 = 0;
       this.hitCounterPlayer2 = 0;
+      this.turn = []
       // remember to change this if we change the number of attempts depending on size and ships
     }
   });
