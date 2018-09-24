@@ -119,10 +119,9 @@ Game.prototype.render = function () {
   gridView.render();
 }
 
-// Needs to be completly changed
-// Game.prototype.result = function () {
-//   // Publish to a ResultView, if attemptsLeft < 1 player 1 wins, otherwise player 2
-//   PubSub.publish('Game:result', this.attemptsLeft )
-// }
+
+Game.prototype.result = function () {
+  PubSub.publish('Game:result', this.turn )
+}
 
 module.exports = Game;
