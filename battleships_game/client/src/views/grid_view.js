@@ -6,7 +6,7 @@ const GridView = function (container, gamestatePlayer1, gamestatePlayer2, turn) 
   this.container = container;
   this.gamestatePlayer1 = gamestatePlayer1;
   this.gamestatePlayer2 = gamestatePlayer2;
-  this.turn = turn
+  this.turn = turn;
 
 };
 

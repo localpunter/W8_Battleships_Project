@@ -11,7 +11,7 @@ const GridTileView = function (container, id, status, turn) {
 GridTileView.prototype.bindEvents = function () {
   const gridTile = createAndAppend('td', this.id, '', this.container);
   this.handleStatus(gridTile);
-  if (this.turn === parseInt(this.id[0])) {
+  if (this.turn !== parseInt(this.id[0])) {
     gridTile.addEventListener('click', (event) => {
       this.handleClick(event);
     });

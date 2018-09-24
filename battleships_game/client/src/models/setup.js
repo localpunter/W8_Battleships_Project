@@ -8,7 +8,7 @@ const Setup = function (container, gamestatePlayer1, gamestatePlayer2) {
   this.gamestatePlayer1 = gamestatePlayer1;
   this.gamestatePlayer2 = gamestatePlayer2;
   this.turn = 1;
-  this.id;
+  this.id = "";
 };
 
 Setup.prototype.bindEvents = function () {
@@ -16,18 +16,6 @@ Setup.prototype.bindEvents = function () {
     console.log("id passed to form", event.detail);
     this.id = event.detail;
     this.updateGamestate();
-
-    // if (this.turn === 1 ) {
-    //   //do stuff in gamestatePlayer1
-    //   this.updateGamestate(this.gamestatePlayer1, this.counterPlayer1)
-    // } else {
-    //   //do stuff in gamestatePlayer2
-    //   this.updateGamestate(this.gamestatePlayer2, this.counterPlayer2)
-    // }
-
-
-
-
   });
   PubSub.subscribe('ResultView:play-again', (event) => {
     console.log('receiving play again');
@@ -42,15 +30,8 @@ Setup.prototype.bindEvents = function () {
 
 Setup.prototype.updateGamestate = function () {
   console.log("updating gamestate");
-// Setup.prototype.updateGamestate = function (gamestate, counter) {
-  // check current state of corresponding tile
-  // comes as a string though so need to convert
   const tileRow = parseInt(this.id[1]);
   const tileCol = parseInt(this.id[2]);
-  // const currentState = gamestate[tileRow][tileCol];
-
-  // need to do this directly on object parameters - we were previously not affecting them
-  // may be refactor later - easier with gamestate object
   if (this.turn === 1) {
     if (this.gamestatePlayer1[tileRow][tileCol] === 0) {
       this.gamestatePlayer1[tileRow][tileCol] = 1;
