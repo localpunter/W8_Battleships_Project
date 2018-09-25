@@ -61,6 +61,9 @@ Setup.prototype.updateGamestate = function () {
   // intended to be 5 for MVP
   if (this.gamestate.shipsPlayer1 < 5 || this.gamestate.shipsPlayer2 < 5) {
     console.log("still setting up");
+    var setting = new Audio('sounds/seagulls.wav');
+    setting.play();
+
     // then continue to render form until enough tiles clicked
     // but first check counter1 and change turn
     if (this.gamestate.shipsPlayer1 === 5) {

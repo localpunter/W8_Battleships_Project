@@ -76,8 +76,12 @@ Game.prototype.updateGameState = function () {
     if (this.gamestate.player2[tileRow][tileCol] === 0) {
       this.gamestate.attemptsPlayer2 += 1;
       this.gamestate.player2[tileRow][tileCol] = 2;
+      var empty = new Audio('sounds/empty.wav');
+      empty.play();
     } else if (this.gamestate.player2[tileRow][tileCol] === 1) {
       this.gamestate.player2[tileRow][tileCol] = 3;
+      var hit = new Audio('sounds/hit.wav');
+      hit.play();
       this.gamestate.hitsPlayer2 += 1;
     }
     if (this.gamestate.hitsPlayer2 < 5) {
@@ -92,8 +96,12 @@ Game.prototype.updateGameState = function () {
     if (this.gamestate.player1[tileRow][tileCol] === 0) {
       this.gamestate.attemptsPlayer1 += 1;
       this.gamestate.player1[tileRow][tileCol] = 2;
+      var empty = new Audio('sounds/empty.wav');
+      empty.play();
     } else if (this.gamestate.player1[tileRow][tileCol] === 1) {
       this.gamestate.player1[tileRow][tileCol] = 3;
+      var hit = new Audio('sounds/hit.wav');
+      hit.play();
       this.gamestate.hitsPlayer1 += 1;
     }
     if (this.gamestate.hitsPlayer1 < 5) {
