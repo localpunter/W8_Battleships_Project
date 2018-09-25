@@ -5,17 +5,11 @@ const createAndAppend = require('../helpers/create_append.js');
 const FormView = function (container, gamestate) {
   this.container = container;
   this.gamestate = gamestate;
-  // this.gamestate1 = gamestate1;
-  // this.gamestate2 = gamestate2;
-  // this.turn = turn;
 };
 
 FormView.prototype.render = function (event) {
-  console.log('form view rendering');
-  console.log(this.gamestate);
 
   const info = "place your ships here"
-
 
   const form1 = createAndAppend('div', 'form1', '' , this.container)
   createAndAppend('h3', 'game-info', `Player 1 ${info}` , form1)

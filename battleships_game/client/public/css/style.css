@@ -45,12 +45,16 @@ h2 {
   text-align: center;
 }
 
-#turn-info {
+#turn-info, #game-finished {
   position: fixed;
   float: left;
-  top: 5%;
+  top: 0%;
   width: 100%;
   margin: 0%;
+}
+
+#game-finished {
+  background-color: #B33A3A;
 }
 
 h3 {
