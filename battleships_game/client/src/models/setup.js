@@ -132,7 +132,7 @@ Setup.prototype.updateGamestate = function (ship_details) {
 };
 
 Setup.prototype.render = function () {
-  this.container.innerHTML = '';
+  // this.container.innerHTML = '';
   const formView = new FormView(this.container, this.gamestate);
   formView.render();
 };

@@ -9,6 +9,8 @@ const FormView = function (container, gamestate) {
 
 FormView.prototype.render = function (event) {
 
+  this.container.innerHTML = '';
+
   const info = "place your ships here"
 
   const form1 = createAndAppend('div', 'form1', '' , this.container)
@@ -51,7 +53,7 @@ FormView.prototype.createSelects = function (form1, form2) {
     currentShips = this.gamestate.shipArrayPlayer1;
 
     reset.addEventListener('click', () => {
-      this.gamestate.renderSetupPlayer1()
+      this.gamestate.resetSetupPlayer1()
       this.render()
     });
   } else {
@@ -61,7 +63,8 @@ FormView.prototype.createSelects = function (form1, form2) {
     currentShips = this.gamestate.shipArrayPlayer2;
 
     reset.addEventListener('click', () => {
-      this.gamestate.renderSetupPlayer2()
+      this.gamestate.resetSetupPlayer2()
+
       this.render()
     });
   };
