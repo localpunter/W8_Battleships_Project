@@ -2,18 +2,14 @@ const PubSub = require('../helpers/pub_sub.js');
 const GridTileView = require('./grid_tile_view.js');
 const createAndAppend = require('../helpers/create_append.js');
 
-// const GridView = function (container, gamestatePlayer1, gamestatePlayer2, turn) {
 const GridView = function (container, gamestate) {
   this.container = container;
   this.gamestate = gamestate;
-  // this.gamestatePlayer1 = gamestatePlayer1;
-  // this.gamestatePlayer2 = gamestatePlayer2;
-  // this.turn = turn;
+
 };
 
 GridView.prototype.render = function (event) {
 
-  //info
   createAndAppend('h2', 'turn-info', `Player ${this.gamestate.turn} turn`, this.container);
 
   const info = "shoot here";

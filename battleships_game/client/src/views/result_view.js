@@ -9,11 +9,9 @@ const ResultView = function () {
 }
 
 ResultView.prototype.bindEvents = function () {
-  console.log('ResultView working');
   PubSub.subscribe('Game:result', (event) => {
     this.turn = event.detail.turn;
     this.gamestate = event.detail;
-    console.log('event detail', event.detail);
     this.handleResult();
     this.playAgain();
     this.render()
