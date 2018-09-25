@@ -25,6 +25,9 @@ IntermediateView.prototype.bindEvents = function () {
 IntermediateView.prototype.handleClick = function () {
   // console.log('gamestate:',this.gamestate);
   // PubSub.publish('IntermediateView:game-ready', [this.gamestatePlayer1, this.gamestatePlayer2]);
+  var start = new Audio('sounds/start.wav');
+  start.play();
+
   PubSub.publish('IntermediateView:game-ready', this.gamestate);
 };
 

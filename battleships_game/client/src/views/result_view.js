@@ -28,6 +28,8 @@ ResultView.prototype.render = function () {
 
 
 ResultView.prototype.handleResult = function () {
+  var final = new Audio('sounds/final.wav');
+  final.play();
   this.container.innerHTML = ''
   if (this.turn === 1) {
     createAndAppend('h2', 'result', 'Player 1 knows how to hide stuff! Player 1 wins!', this.container)
