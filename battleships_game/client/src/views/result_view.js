@@ -1,20 +1,31 @@
 const PubSub = require('../helpers/pub_sub.js');
 const createAndAppend = require('../helpers/create_append.js');
+const ResultGridView = require('./result_grid_view.js');
 
 const ResultView = function () {
   this.container = container;
   this.turn = 1;
+  this.gamestate;
 }
 
 ResultView.prototype.bindEvents = function () {
   console.log('ResultView working');
   PubSub.subscribe('Game:result', (event) => {
     this.turn = event.detail.turn;
-    console.log('turn:', this.turn);
+    this.gamestate = event.detail;
+    console.log('event detail', event.detail);
     this.handleResult();
     this.playAgain();
+    this.render()
+
   });
 };
+
+ResultView.prototype.render = function () {
+  const resultGrid = new ResultGridView(this.container, this.gamestate)
+  resultGrid.render()
+};
+
 
 ResultView.prototype.handleResult = function () {
   this.container.innerHTML = ''
@@ -26,7 +37,6 @@ ResultView.prototype.handleResult = function () {
 };
 
 ResultView.prototype.playAgain = function () {
-  // for the extensions, but this will be the place to implement the play again button
   const button = createAndAppend('button', 'play-again', 'Play again', this.container);
   button.addEventListener('click', () => {
     PubSub.publish('ResultView:play-again', true)
