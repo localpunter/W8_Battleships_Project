@@ -15,17 +15,18 @@ Game.prototype.bindEvents = function () {
 
   PubSub.subscribe('GridTileView:tile-clicked', (event) => {
 
-    this.id = event.detail
+    this.id = event.detail;
     const tileRow = parseInt(this.id[1]);
     const tileCol = parseInt(this.id[2]);
 
+
     if (this.gamestate.turn === 1) {
       if (this.gamestate.player2[tileRow][tileCol] < 2) {
-        this.updateGameState();
+        this.updateGameState(tileRow, tileCol);
       }
     } else {
       if (this.gamestate.player1[tileRow][tileCol] < 2) {
-        this.updateGameState();
+        this.updateGameState(tileRow, tileCol);
       }
     }
 
@@ -34,10 +35,10 @@ Game.prototype.bindEvents = function () {
 
 };
 
-Game.prototype.updateGameState = function () {
+Game.prototype.updateGameState = function (tileRow, tileCol) {
 
-  const tileRow = parseInt(this.id[1]);
-  const tileCol = parseInt(this.id[2]);
+  // const tileRow = parseInt(this.id[1]);
+  // const tileCol = parseInt(this.id[2]);
 
   if (this.gamestate.turn === 1) {
     if (this.gamestate.player2[tileRow][tileCol] === 0) {
@@ -51,7 +52,7 @@ Game.prototype.updateGameState = function () {
       hit.play();
       this.gamestate.hitsPlayer2 += 1;
     }
-    if (this.gamestate.hitsPlayer2 < 5) {
+    if (this.gamestate.hitsPlayer2 < 17) {
       this.gamestate.turn = 2;
       this.render();
     } else {
@@ -71,7 +72,7 @@ Game.prototype.updateGameState = function () {
       hit.play();
       this.gamestate.hitsPlayer1 += 1;
     }
-    if (this.gamestate.hitsPlayer1 < 5) {
+    if (this.gamestate.hitsPlayer1 < 17) {
       this.gamestate.turn = 1;
       this.render();
     } else {

@@ -4,6 +4,8 @@ const Gamestate = function (size) {
   this.player2 = [];
   this.shipsPlayer1 = 0;
   this.shipsPlayer2 = 0;
+  this.shipArrayPlayer1 = [0, 0, 0, 0, 0];
+  this.shipArrayPlayer2 = [0, 0, 0, 0, 0];
   this.attemptsPlayer1 = 0;
   this.attemptsPlayer2 = 0;
   this.hitsPlayer1 = 0;
@@ -30,11 +32,43 @@ Gamestate.prototype.reset = function () {
   this.player2 = player2;
   this.shipsPlayer1 = 0;
   this.shipsPlayer2 = 0;
+  this.shipArrayPlayer1 = [0, 0, 0, 0, 0];
+  this.shipArrayPlayer2 = [0, 0, 0, 0, 0];
   this.attemptsPlayer1 = 0;
   this.attemptsPlayer2 = 0;
   this.hitsPlayer1 = 0;
   this.hitsPlayer2 = 0;
   this.turn = 1;
+};
+
+Gamestate.prototype.resetSetupPlayer1 = function () {
+  const player1 = [];
+  const defaultEntry = 0;
+  for (let i = 0; i < this.size; i++) {
+    const row1 = [];
+    for (let j = 0; j < this.size; j++) {
+      row1.push(defaultEntry);
+    }
+    player1.push(row1);
+  }
+  this.player1 = player1;
+  this.shipsPlayer1 = 0;
+  this.shipArrayPlayer1 = [0, 0, 0, 0, 0];
+};
+
+Gamestate.prototype.resetSetupPlayer2 = function () {
+  const player2 = [];
+  const defaultEntry = 0;
+  for (let i = 0; i < this.size; i++) {
+    const row2 = [];
+    for (let j = 0; j < this.size; j++) {
+      row2.push(defaultEntry);
+    }
+    player2.push(row2);
+  }
+  this.player2 = player2;
+  this.shipsPlayer2 = 0;
+  this.shipArrayPlayer2 = [0, 0, 0, 0, 0];
 };
 
 module.exports = Gamestate;
