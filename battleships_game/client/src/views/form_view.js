@@ -36,8 +36,6 @@ FormView.prototype.render = function (event) {
       formTileView.bindEvents();
     };
   };
-
-
 };
 
 FormView.prototype.createSelects = function (form1, form2) {
@@ -48,10 +46,12 @@ FormView.prototype.createSelects = function (form1, form2) {
   if (this.gamestate.turn === 1) {
     selectShip = createAndAppend('select', `select-ship`, '', form1);
     selectPosition = createAndAppend('select', `select-position`, '', form1);
+    reset = createAndAppend('button','reset', 'Reset', form1 );
   } else {
     selectShip = createAndAppend('select', `select-ship`, '', form2);
     selectPosition = createAndAppend('select', `select-position`, '', form2);
-  }
+    reset = createAndAppend('button','reset', 'Reset', form2 );
+  };
 
   const destroyer = createAndAppend('option', 1 , 'Destroyer', selectShip);
   destroyer.value = 1;
