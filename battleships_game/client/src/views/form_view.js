@@ -54,15 +54,20 @@ FormView.prototype.createSelects = function (form1, form2) {
   }
 
   const destroyer = createAndAppend('option', 1 , 'Destroyer', selectShip);
+  destroyer.value = 1;
   const cruiser = createAndAppend('option', 2, 'Cruiser', selectShip);
+  cruiser.value = 2;
   const submarine = createAndAppend('option', 3, 'Submarine', selectShip);
+  submarine.value = 3;
   const battleship = createAndAppend('option', 4, 'Battleship', selectShip);
+  battleship.value = 4;
   const carrier = createAndAppend('option', 5, 'Carrier', selectShip);
+  carrier.value = 5;
 
   const horizontal = createAndAppend('option', 1, 'Horizonal', selectPosition );
+  horizontal.value = 1;
   const vertical = createAndAppend('option', 2, 'Vertical', selectPosition );
-
-
+  vertical.value = 2;
 
 };
 

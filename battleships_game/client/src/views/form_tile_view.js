@@ -19,7 +19,10 @@ FormTileView.prototype.bindEvents = function () {
 };
 
 FormTileView.prototype.handleClick = function () {
-  PubSub.publish('FormTileView:tile-clicked', this.id);
+  const hv = document.querySelector('#select-position').value
+  const ship = document.querySelector('#select-ship').value
+  console.log(hv, ship);
+  PubSub.publish('FormTileView:tile-clicked', [this.id, hv, ship]);
 };
 
 FormTileView.prototype.handleStatus = function (parent) {
