@@ -12,13 +12,18 @@ table {
   margin: 30px;
 }
 #form-table td:hover {
-  background: lightblue;
+  background: none;
+  box-shadow: 5px 10px 45px rgba(0, 0, 0, .50);
+  transition: transform .2s;
+  /* transform: translate3D(0, -0.2em, 0.1em); */
+  transform: scale(1:1);
   cursor: url(http://icons.iconarchive.com/icons/aha-soft/free-game/24/Anchor-icon.png), auto;
   /* cursor: url(http://icons.iconarchive.com/icons/messbook/outdated/32/Ship-Wheel-icon.png), auto; */
 }
 
 #grid-table td:hover {
-  background: red;
+  background: none;box-shadow: 5px 10px 45px rgba(0, 0, 0, .50);
+  transform: translate3D(0, -0.2em, 0.1em);
   color: white;
   cursor: url(http://icons.iconarchive.com/icons/iconsmind/outline/32/Target-icon.png), auto;
 }
