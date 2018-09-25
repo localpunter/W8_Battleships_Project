@@ -24,15 +24,15 @@ GridTileView.prototype.handleClick = function () {
 
 GridTileView.prototype.handleStatus = function (parent) {
   if (this.status <= 1) {
-    const src = 'css/images/sea.jpeg';
+    const src = 'css/images/sea1.svg';
     const emptyImage = createAndAppend('img', null, '', parent);
     emptyImage.src = src;
   } else if (this.status === 2) {
-    const src = 'css/images/miss1.jpg';
+    const src = 'css/images/miss1.svg';
     const missImage = createAndAppend('img', null, '', parent);
     missImage.src = src;
   } else if (this.status === 3) {
-    const src = 'css/images/hit.jpg';
+    const src = 'css/images/hit.svg';
     const hitImage = createAndAppend('img', null, '', parent);
     hitImage.src = src;
   }
