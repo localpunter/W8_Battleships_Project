@@ -43,31 +43,24 @@ Setup.prototype.updateGamestate = function (ship_details) {
   // check turn and ship not already selected
   if (this.gamestate.turn === 1 && this.gamestate.shipArrayPlayer1[shipIndex] === 0) {
 
-    console.log("turn and array conditions ok");
-
-
-    if (horVer === 1) { // horVer === 1 = HORIZONTAL
-      console.log("horVer === 1");
+    if (horVer === 1 && 6 - tileCol >= shipSize) { // horVer === 1 = HORIZONTAL
       const no_ship_in_way = true;
-      console.log("no_ship_in_way", no_ship_in_way);
       for (let k = tileCol; k < tileCol + shipSize; k++) {
           if (this.gamestate.player1[tileRow][k] === 1) {no_ship_in_way = false;}
       }
-      console.log("no_ship_in_way2", no_ship_in_way);
-      if (6 - tileCol >= shipSize && no_ship_in_way) {
-        console.log("size ok and no ship in way");
+      if (no_ship_in_way) {
         for (let k = tileCol; k < tileCol + shipSize; k++) {
           this.gamestate.player1[tileRow][k] = 1;
         }
         this.gamestate.shipsPlayer1 += shipSize;
         this.gamestate.shipArrayPlayer1[shipIndex] = 1;
       }
-    } else if (horVer === 2) { // horVer === 2 = VERTICAL
+    } else if (horVer === 2 && 6 - tileRow >= shipSize) { // horVer === 2 = VERTICAL
       const no_ship_in_way = true;
       for (let k = tileRow; k < tileRow + shipSize; k++) {
           if (this.gamestate.player1[k][tileCol] === 1) {no_ship_in_way = false;}
       }
-      if (6 - tileRow >= shipSize && no_ship_in_way) {
+      if (no_ship_in_way) {
         for (let k = tileRow; k < tileRow + shipSize; k++) {
           this.gamestate.player1[k][tileCol] = 1;
         }
