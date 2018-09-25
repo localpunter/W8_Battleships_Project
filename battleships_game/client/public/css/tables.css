@@ -6,11 +6,13 @@ table img {
 
 table {
   width: 95%;
-  margin-top: 5em;
+  margin-top: 0.5em;
+  /* margin-top: 5em; */
 }
 
 #form1, #form2, #grid1, #grid2{
-  margin: 30px;
+  margin-right: 2em;
+  margin-left: 2em;
 }
 #form-table td:hover {
   background: none;
