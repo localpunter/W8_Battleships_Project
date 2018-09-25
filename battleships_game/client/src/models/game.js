@@ -52,7 +52,7 @@ Game.prototype.updateGameState = function (tileRow, tileCol) {
       hit.play();
       this.gamestate.hitsPlayer2 += 1;
     }
-    if (this.gamestate.hitsPlayer2 < 5) {
+    if (this.gamestate.hitsPlayer2 < 17) {
       this.gamestate.turn = 2;
       this.render();
     } else {
@@ -72,7 +72,7 @@ Game.prototype.updateGameState = function (tileRow, tileCol) {
       hit.play();
       this.gamestate.hitsPlayer1 += 1;
     }
-    if (this.gamestate.hitsPlayer1 < 5) {
+    if (this.gamestate.hitsPlayer1 < 17) {
       this.gamestate.turn = 1;
       this.render();
     } else {
