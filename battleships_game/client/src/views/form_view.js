@@ -49,11 +49,21 @@ FormView.prototype.createSelects = function (form1, form2) {
     selectPosition = createAndAppend('select', `select-position`, '', form1);
     reset = createAndAppend('button','reset', 'Reset', form1 );
     currentShips = this.gamestate.shipArrayPlayer1;
+
+    reset.addEventListener('click', () => {
+      this.gamestate.renderSetupPlayer1()
+      this.render()
+    });
   } else {
     selectShip = createAndAppend('select', `select-ship`, '', form2);
     selectPosition = createAndAppend('select', `select-position`, '', form2);
     reset = createAndAppend('button','reset', 'Reset', form2 );
     currentShips = this.gamestate.shipArrayPlayer2;
+
+    reset.addEventListener('click', () => {
+      this.gamestate.renderSetupPlayer2()
+      this.render()
+    });
   };
 
 
