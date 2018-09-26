@@ -30,12 +30,17 @@ h2 {
   text-align: center;
 }
 
-#turn-info, #game-finished {
+#turn-info-1, #turn-info-2, #game-finished {
   position: fixed;
   /* float: left; */
   top: 0%;
   width: 100%;
   margin: 0%;
+}
+
+#turn-info-1, #turn-info-2, #game-info1, #game-info2, #player-2-info, #player-1-info {
+  font-variant: small-caps;
+  font-weight: bold;
 }
 
 #game-finished {
@@ -47,6 +52,10 @@ h3 {
   background: rgba(0, 127, 255,0.5);
 }
 
+#game-info2 {
+
+}
+
 h3, h2 {
   font-family: 'Open Sans', sans-serif;
   margin-left: 3%;
@@ -54,4 +63,30 @@ h3, h2 {
   padding: 0.6em;
   border-radius: 0.1em;
   color: white;
+}
+
+#player-2-info {
+  background-color: rgba(179, 26, 255, 0.5);
+}
+
+#player-1-info {
+  background-color: rgba(41, 163, 41, 0.5);
+}
+
+#game-info2 {
+  background-color: rgba(179, 26, 255, 0.5);
+
+}
+
+#game-info1 {
+  background-color: rgba(41, 163, 41, 0.5);
+
+}
+
+#turn-info-2 {
+  background-color: rgba(179, 26, 255, 1.0);
+}
+
+#turn-info-1 {
+  background-color: rgba(41, 163, 41, 1.0);
 }

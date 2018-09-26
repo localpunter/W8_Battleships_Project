@@ -15,9 +15,9 @@ FormView.prototype.render = function (event) {
 
   const form1 = createAndAppend('div', 'form1', '' , this.container)
   console.log(form1);
-  createAndAppend('h3', 'game-info', `Player 1 ${info}` , form1)
+  createAndAppend('h3', 'game-info1', `Player 1 ${info}` , form1)
   const form2 = createAndAppend('div', 'form2', '' , this.container)
-  createAndAppend('h3', 'game-info', `Player 2 ${info}` , form2)
+  createAndAppend('h3', 'game-info2', `Player 2 ${info}` , form2)
 
   this.createSelects(form1, form2);
 
