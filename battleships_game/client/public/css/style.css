@@ -4,8 +4,6 @@
 	justify-content: center;
 }
 
-
-
 #logo {
   display: inline-block;
   /* vertical-align: top; */
@@ -18,40 +16,44 @@ body {
   background-image: url('images/battleship-background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-
 }
 
+
+#turn-info {
+  position: fixed;
+  top: 0%;
+  width: 100%;
+  margin: 0%;
+}
+
+/* #result {
+  width: 100%;
+} */
+
+#result{
+  background-color: #B33A3A;
+  width: 100%;
+}
 
 h2 {
   font-size: 1.8em;
   background-color: #4BB543;
   display: inline-block;
   font-variant: small-caps;
-  text-align: center;
-}
 
-#turn-info, #game-finished {
-  position: fixed;
-  /* float: left; */
-  top: 0%;
-  width: 100%;
-  margin: 0%;
-}
-
-#game-finished {
-  background-color: #B33A3A;
 }
 
 h3 {
   font-size: 1.5em;
-  background: rgba(0, 127, 255,0.5);
+  background: rgb(109, 112, 117);
 }
 
 h3, h2 {
   font-family: 'Open Sans', sans-serif;
   margin-left: 3%;
   margin-right: 3%;
-  padding: 0.6em;
-  border-radius: 0.1em;
+  padding: 0.2em;
+  text-align: center;
+  border-radius: 0.3em;
   color: white;
 }

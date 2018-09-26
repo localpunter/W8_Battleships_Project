@@ -16,12 +16,22 @@
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
+#destroy-button{
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 #play-again{
   color: #3333ff;
-  font-size: 16px;
+  font-size: 1.5em;
+  font-variant: small-caps;
   border-radius: 8px;
-  width: 250px;
-  height: 60px;
+  width: 90%;
+  height: 40px;
   margin: 5px;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
@@ -31,4 +41,9 @@
   background-color: #80b3ff;
   color: white;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#select-position, #select-ship, #reset{
+  margin-left: 1em;
+  margin-bottom: 1em;
 }
