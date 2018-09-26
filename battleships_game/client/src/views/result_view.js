@@ -14,7 +14,7 @@ ResultView.prototype.bindEvents = function () {
     this.gamestate = event.detail;
     this.handleResult();
     this.playAgain();
-    this.render()
+    this.render();
 
   });
 };
@@ -30,9 +30,9 @@ ResultView.prototype.handleResult = function () {
   final.play();
   this.container.innerHTML = ''
   if (this.turn === 1) {
-    createAndAppend('h2', 'result', 'Player 1 knows how to hide stuff! Player 1 wins!', this.container)
+    createAndAppend('h2', 'result', 'Game Over! Player 1 knows how to hide stuff! Player 1 wins!', this.container)
   } else {
-    createAndAppend('h2', 'result', `Player 2 is literally on fire! Oh wait, that's Player 1 ships! Player 2 wins!`, this.container)
+    createAndAppend('h2', 'result', `Game Over! Player 2 knows how to hide stuff! Player 2 wins!`, this.container)
   }
 };
 
