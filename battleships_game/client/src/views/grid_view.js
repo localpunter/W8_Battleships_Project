@@ -15,10 +15,10 @@ GridView.prototype.render = function (event) {
   const info = "shoot here";
 
   const grid1 = createAndAppend('div', 'grid1', '', this.container);
-  createAndAppend('h3', 'player-2-info', `Player 2 ${info}`, grid1)
+  createAndAppend('h3', 'player-2-info', `Player 2 ${info}. ${17 - this.gamestate.hitsPlayer1} hits left`, grid1)
 
   const grid2 = createAndAppend('div', 'grid2', '', this.container)
-  createAndAppend('h3', 'player-1-info', `Player 1 ${info}`, grid2)
+  createAndAppend('h3', 'player-1-info', `Player 1 ${info}. ${17 - this.gamestate.hitsPlayer2} hits left`, grid2)
 
   const gridTable1 = createAndAppend('table', 'grid-table', '', grid1)
   for (let i = 0; i < this.gamestate.player1.length; i++) {

@@ -1,13 +1,13 @@
 
 #destroy-button{
   color: #f44336;
-  font-size: 16px;
-  border-radius: 8px;
-  width: 250px;
-  height: 60px;
-  margin: 5px;
+  font-size: 1.5em;
+  border-radius: 0.5em;
+  width: 18em;
+  height: 3.5em;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
+  margin: auto;
 }
 
 #destroy-button:hover{
@@ -16,23 +16,14 @@
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-#destroy-button{
-  position: absolute;
-  margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
 #play-again{
   color: #3333ff;
   font-size: 1.5em;
   font-variant: small-caps;
-  border-radius: 8px;
-  width: 90%;
-  height: 40px;
-  margin: 5px;
+  border-radius: 0.5em;
+  width: 85%;
+  height: 3.5em;
+  margin: auto;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
 }
