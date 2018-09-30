@@ -4,7 +4,6 @@ const FormView = require('../views/form_view.js')
 const Setup = function (container, gamestate) {
   this.container = container;
   this.gamestate = gamestate;
-  // this.id = "";
 };
 
 Setup.prototype.bindEvents = function () {
@@ -24,8 +23,6 @@ Setup.prototype.bindEvents = function () {
 
 Setup.prototype.updateGamestate = function (ship_details) {
   console.log(ship_details);
-  // const tileRow = parseInt(this.id[1]);
-  // const tileCol = parseInt(this.id[2]);
   const shipSizes = [2, 3, 3, 4, 5];
 
   const tileRow = parseInt(ship_details[0][1]);
@@ -33,12 +30,6 @@ Setup.prototype.updateGamestate = function (ship_details) {
   const horVer = parseInt(ship_details[1]);
   const shipIndex = parseInt(ship_details[2])-1;
   const shipSize = shipSizes[shipIndex];
-
-  console.log("horVer", horVer);
-  console.log("shipIndex", shipIndex);
-  console.log("shipSize", shipSize);
-
-  console.log("this.gamestate.shipsPlayer1", this.gamestate.shipsPlayer1);
 
   // check turn and ship not already selected
   if (this.gamestate.turn === 1 && this.gamestate.shipArrayPlayer1[shipIndex] === 0) {
@@ -69,17 +60,6 @@ Setup.prototype.updateGamestate = function (ship_details) {
       }
     }
 
-  //   if (this.gamestate.player1[tileRow][tileCol] === 0) {
-  //
-  //     this.gamestate.player1[tileRow][tileCol] = 1;
-  //     this.gamestate.shipsPlayer1 += 1;
-  //
-  //   } else if (this.gamestate.player1[tileRow][tileCol] === 1) {
-  //
-  //     this.gamestate.player1[tileRow][tileCol] = 0;
-  //     this.gamestate.shipsPlayer1 -= 1;
-  //
-  //   }
 
 } else if (this.gamestate.turn === 2 && this.gamestate.shipArrayPlayer2[shipIndex] === 0) {
 
@@ -109,14 +89,6 @@ Setup.prototype.updateGamestate = function (ship_details) {
         }
       }
 
-  //   if (this.gamestate.player2[tileRow][tileCol] === 0) {
-  //     this.gamestate.player2[tileRow][tileCol] = 1;
-  //     this.gamestate.shipsPlayer2 += 1;
-  //   } else if (this.gamestate.player2[tileRow][tileCol] === 1) {
-  //     this.gamestate.player2[tileRow][tileCol] = 0;
-  //     this.gamestate.shipsPlayer2 -= 1;
-  //   }
-
   }
 
 
@@ -132,7 +104,6 @@ Setup.prototype.updateGamestate = function (ship_details) {
 };
 
 Setup.prototype.render = function () {
-  // this.container.innerHTML = '';
   const formView = new FormView(this.container, this.gamestate);
   formView.render();
 };

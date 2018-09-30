@@ -37,9 +37,6 @@ Game.prototype.bindEvents = function () {
 
 Game.prototype.updateGameState = function (tileRow, tileCol) {
 
-  // const tileRow = parseInt(this.id[1]);
-  // const tileCol = parseInt(this.id[2]);
-
   if (this.gamestate.turn === 1) {
     if (this.gamestate.player2[tileRow][tileCol] === 0) {
       this.gamestate.attemptsPlayer2 += 1;

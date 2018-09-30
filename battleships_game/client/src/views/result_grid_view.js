@@ -9,8 +9,6 @@ const ResultGridView = function (container, gamestate) {
 
 ResultGridView.prototype.render = function (event) {
 
-  // createAndAppend('h2', 'game-finished', `Game Over`, this.container);
-
   const info = "board";
 
   const grid1 = createAndAppend('div', 'grid1', '', this.container);
