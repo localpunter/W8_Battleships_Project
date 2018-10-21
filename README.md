@@ -18,7 +18,7 @@ Our group was given a brief with the following points to discuss and achieve in 
 
 ## Achievements
 
-* We applied an agile aproach to out planning.
+* We applied an agile aproach to our planning.
 
 * Our MVP involved really basic functionalities: One-tile ships and a basic two-player mode (one placing the ships the other destroying them). This goal was fulfilled in about two days.
 
