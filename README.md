@@ -4,7 +4,7 @@ The aim of  this project was to design a JavaScript project creating a SPA (sing
 
 **Play the game:** http://battleships.arsgaming.com
 
-**Group members:** Cristian Kaluzsik, Allan Hunter, Simon Shepard, Alvaro Alonso.
+**Group members:** Cristian Kaluzsik, Alan Hunter, Simon Shepard, Alvaro Alonso.
 
 ## Brief
 
